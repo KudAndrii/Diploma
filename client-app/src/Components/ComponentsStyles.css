@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0 1px 15px 0 rgb(193, 193, 193);
+    height: 100px;
+}
+
+.header:hover {
+    background-color: rgb(213, 213, 213);
+}
+
+h1 header {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.navbar {
+    padding-top: 0;
+}
+
+.nav-link:hover {
+    color: rgb(0, 0, 0);
+}
+
+.headerDKLogo {
+    height: 80px;
+    padding-left: 50px;
+    margin-top: 10px;
+}
+
+.login {
+    text-align: center;
+    margin: auto;
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.card {
+    width: 18rem;
+}
