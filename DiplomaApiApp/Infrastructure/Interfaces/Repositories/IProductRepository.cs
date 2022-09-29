@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Models;
 
-namespace Infrastructure.Interfaces
+namespace Infrastructure.Interfaces.Repositories
 {
     public interface IProductRepository
     {
         public ProductModel GetById(int id);
-        public IQueryable<ProductModel> GetPage(int page, int count);
-        public IQueryable<ProductModel> GetByCategory(int categoryId);
+        public IEnumerable<ProductModel> GetPage(int page, int count);
     }
 }

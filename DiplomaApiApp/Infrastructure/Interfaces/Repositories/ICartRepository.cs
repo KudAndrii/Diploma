@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Models;
 
-namespace Infrastructure.Interfaces
+namespace Infrastructure.Interfaces.Repositories
 {
-    public interface ICategoryRepository
+    public interface ICartRepository
     {
-        public CategoryModel GetById(int id);
+        public CartModel GetByUserId(int userId);
     }
 }
