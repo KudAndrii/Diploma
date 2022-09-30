@@ -17,15 +17,21 @@ namespace Infrastructure.UnitsOfWork
         private SQLContext _db = new SQLContext();
         private SQLProductRepository? _productRepository;
         private SQLCartRepository? _cartRepository;
+        private SQLCategoryRepository? _categoryRepository;
 
         ~SQLUnitOfWork()
         {
             Dispose(false);
         }
 
-        public IProductRepository ProductRepository => _productRepository == null ? new SQLProductRepository(_db) : _productRepository;
+        public IProductRepository ProductRepository =>
+            _productRepository == null ? new SQLProductRepository(_db) : _productRepository;
 
-        public ICartRepository CartRepository => _cartRepository == null ? new SQLCartRepository(_db) : _cartRepository;
+        public ICartRepository CartRepository =>
+            _cartRepository == null ? new SQLCartRepository(_db) : _cartRepository;
+
+        public ICategoryRepository CategoryRepository =>
+            _categoryRepository == null ? new SQLCategoryRepository(_db) : _categoryRepository;
 
         public void Save()
         {

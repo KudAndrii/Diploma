@@ -7,9 +7,8 @@ using Infrastructure.Models;
 
 namespace Infrastructure.Interfaces.Repositories
 {
-    public interface IProductRepository
+    public interface ICategoryRepository
     {
-        public ProductModel GetById(int id);
-        public IEnumerable<ProductModel> GetPage(int page, int categoryId);
+        public IEnumerable<CategoryModel> GetAll();
     }
 }

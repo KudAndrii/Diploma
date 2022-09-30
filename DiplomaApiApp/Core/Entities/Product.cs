@@ -10,6 +10,7 @@ namespace Core.Entities
     {
         public int ProductId { get; set; }
         public string? Name { get; set; }
+        public string? Img { get; set; }
         public string? Category { get; set; }
         public double Price { get; set; }
         public string? ShortDescription { get; set; }

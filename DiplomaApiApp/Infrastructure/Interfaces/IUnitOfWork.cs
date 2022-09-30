@@ -11,6 +11,7 @@ namespace Infrastructure.Interfaces
     {
         public IProductRepository ProductRepository { get; }
         public ICartRepository CartRepository { get; }
+        public ICategoryRepository CategoryRepository { get; }
         public void Save();
     }
 }

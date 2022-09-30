@@ -15,8 +15,9 @@ namespace Infrastructure.Models
             Products = new List<ProductModel>();
         }
 
-        public int? CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public string? Name { get; set; }
+        public string? Img { get; set; }
         public List<ProductModel> Products { get; set; }
     }
 }
