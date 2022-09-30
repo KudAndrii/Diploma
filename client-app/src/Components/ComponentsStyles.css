@@ -40,3 +40,31 @@ h1 header {
 .card {
     width: 18rem;
 }
+
+.catalogGeneral {
+    display: flex;
+}
+
+.catalog {
+    width: 90%;
+    margin-top: 10px;
+}
+
+.tools {
+    width: 10%;
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.sort_icon {
+    display: block;
+    height: 30px;
+    padding: 5px;
+    border-radius: 30%;
+    margin: 0 0 20px auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.sort_icon:hover {
+    background-color: rgb(231, 229, 229);
+}

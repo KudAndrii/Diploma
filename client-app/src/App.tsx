@@ -5,8 +5,10 @@ import HeaderComponent from "./Components/HeaderComponent";
 import { Route, Routes } from "react-router-dom";
 import { ProductRangeService } from "./Services/ProductRangeService";
 import CatalogComponent from "./Components/CatalogComponent";
+import { ProductCategoriesService } from "./Services/ProductCategoriesService";
 
 export const productRangeService = new ProductRangeService();
+export const productCategoriesService = new ProductCategoriesService();
 
 function App() {
     return (
