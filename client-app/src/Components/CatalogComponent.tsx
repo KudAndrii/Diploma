@@ -4,6 +4,8 @@ import { productCategoriesService } from "../App";
 import ProductCardComponent from "./ProductCardComponent";
 import Sort_down from "../icons/sort-alpha-down.svg";
 import Sort_up from "../icons/sort-alpha-up-alt.svg";
+import Arrow_left from "../icons/left-arrow.png";
+import Arrow_right from "../icons/right-arrow.png";
 import { useState } from "react";
 
 const CatapogComponent = observer((): JSX.Element => {
@@ -16,7 +18,7 @@ const CatapogComponent = observer((): JSX.Element => {
                     {productCategoriesService.categories &&
                         productCategoriesService.categories.map((x, index) => (
                             <h4
-                                className="btn"
+                                className="btn btn-outline-dark"
                                 key={index}
                                 onClick={() => {
                                     // products by category request
@@ -51,6 +53,10 @@ const CatapogComponent = observer((): JSX.Element => {
                             ))}
                     </div>
                 </div>
+            </div>
+            <div className="pageing">
+                <img src={Arrow_left} className="arrow"></img>
+                <img src={Arrow_right} className="arrow"></img>
             </div>
         </>
     );

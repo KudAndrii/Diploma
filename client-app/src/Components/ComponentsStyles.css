@@ -53,7 +53,7 @@ h1 header {
 .tools {
     width: 10%;
     padding-top: 3rem;
-    text-align: center;
+    margin-left: 10px;
 }
 
 .sort_icon {
@@ -67,4 +67,17 @@ h1 header {
 
 .sort_icon:hover {
     background-color: rgb(231, 229, 229);
+}
+
+.pageing {
+    justify-content: center;
+    margin: auto;
+}
+
+.arrow {
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    height: 30px;
 }
