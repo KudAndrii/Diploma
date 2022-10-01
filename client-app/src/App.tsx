@@ -5,7 +5,7 @@ import HeaderComponent from "./Components/HeaderComponent";
 import { Route, Routes } from "react-router-dom";
 import { ProductRangeService } from "./Services/ProductRangeService";
 import CatalogComponent from "./Components/CatalogComponent";
-import ProductComponent from "./Components/ProductComponent";
+import ProductPageComponent from "./Components/ProductPageComponent";
 import CartComponent from "./Components/CartComponent";
 import { ProductCategoriesService } from "./Services/ProductCategoriesService";
 
@@ -18,7 +18,7 @@ function App() {
             <HeaderComponent></HeaderComponent>
             <Routes>
                 <Route path="catalog" element={<CatalogComponent />} />
-                <Route path="catalog/:id" element={<ProductComponent />} />
+                <Route path="catalog/:id" element={<ProductPageComponent />} />
                 <Route path="cart" element={<CartComponent />} />
             </Routes>
         </>

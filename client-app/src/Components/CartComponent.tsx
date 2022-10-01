@@ -1,7 +1,7 @@
 import ProductCardComponent from "./ProductCardComponent";
 import ProductType from "../Types/ProductType";
 
-const CatalogComponent = (): JSX.Element => {
+const CartComponent = (): JSX.Element => {
     const emptyMessage = "It is empty now :(";
     const sessionString = sessionStorage.getItem("ShoppingCart");
     let sessionList: ProductType[] | null = null;
@@ -34,4 +34,4 @@ const CatalogComponent = (): JSX.Element => {
     }
 };
 
-export default CatalogComponent;
+export default CartComponent;

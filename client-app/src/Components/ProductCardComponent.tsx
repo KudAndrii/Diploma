@@ -1,5 +1,6 @@
 import { FC } from "react";
 import ProductType from "../Types/ProductType";
+import "./ComponentsStyles.css";
 
 type childType = {
     productType: ProductType;

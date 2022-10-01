@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import "./ComponentsStyles.css";
 import { Button } from "react-bootstrap";
 
-const ProductComponent: FC = (): JSX.Element => {
+const ProductPageComponent: FC = (): JSX.Element => {
     const { id } = useParams();
     const product = productRangeService.productList.find((prod) => {
         return prod.id === Number(id);
@@ -14,8 +14,8 @@ const ProductComponent: FC = (): JSX.Element => {
     return (
         <>
             <div className="productPage">
-                <div className="productDescription">
-                    <img className="pageImage" alt="product image" />
+                <div className="productGeneral">
+                    <img className="productImage" alt="product image" />
                     <h3 className="productName">{product?.name}</h3>
                 </div>
                 <div className="productDescription">
@@ -32,4 +32,4 @@ const ProductComponent: FC = (): JSX.Element => {
     );
 };
 
-export default ProductComponent;
+export default ProductPageComponent;

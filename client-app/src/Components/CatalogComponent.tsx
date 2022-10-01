@@ -8,6 +8,7 @@ import Arrow_left from "../icons/left-arrow.png";
 import Arrow_right from "../icons/right-arrow.png";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import "./ComponentsStyles.css";
 
 const CatapogComponent = observer((): JSX.Element => {
     const [sortFlag, setSortFlag] = useState(true);

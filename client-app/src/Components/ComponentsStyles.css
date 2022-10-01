@@ -41,13 +41,17 @@ h1 header {
     width: 18rem;
 }
 
+.card:hover {
+    background-color: rgb(213, 213, 213);
+    box-shadow: 0 1px 15px 0 rgb(193, 193, 193);
+}
+
 .catalogGeneral {
     display: flex;
 }
 
 .catalog {
     width: 90%;
-    margin-top: 10px;
 }
 
 .tools {
@@ -70,7 +74,7 @@ h1 header {
 }
 
 .sort_icon:hover {
-    background-color: rgb(231, 229, 229);
+    background-color: rgb(213, 213, 213);
 }
 
 .pageing {
@@ -87,5 +91,29 @@ h1 header {
 }
 
 .arrow:hover {
-    background-color: rgb(231, 229, 229);
+    background-color: rgb(213, 213, 213);
+}
+
+.productPage {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+}
+
+.productGeneral {
+    width: 50%;
+    margin-left: 50px;
+}
+
+.productImage {
+    margin-bottom: 20px;
+}
+
+.productDescription {
+    width: 50%;
+}
+
+.emptyMessage {
+    text-align: center;
+    margin-top: 3rem;
 }
