@@ -56,9 +56,13 @@ h1 header {
     margin-left: 10px;
 }
 
+.category {
+    display: block;
+}
+
 .sort_icon {
     display: block;
-    height: 30px;
+    height: 40px;
     padding: 5px;
     border-radius: 30%;
     margin: 0 0 20px auto;
@@ -70,14 +74,18 @@ h1 header {
 }
 
 .pageing {
+    display: flex;
     justify-content: center;
-    margin: auto;
 }
 
 .arrow {
-    display: inline-block;
-    justify-content: center;
-    text-align: center;
-    margin: auto;
-    height: 30px;
+    display: block;
+    height: 45px;
+    padding: 5px;
+    border-radius: 30%;
+    background-color: rgb(255, 255, 255);
+}
+
+.arrow:hover {
+    background-color: rgb(231, 229, 229);
 }

@@ -5,6 +5,8 @@ import HeaderComponent from "./Components/HeaderComponent";
 import { Route, Routes } from "react-router-dom";
 import { ProductRangeService } from "./Services/ProductRangeService";
 import CatalogComponent from "./Components/CatalogComponent";
+import ProductComponent from "./Components/ProductComponent";
+import CartComponent from "./Components/CartComponent";
 import { ProductCategoriesService } from "./Services/ProductCategoriesService";
 
 export const productRangeService = new ProductRangeService();
@@ -16,8 +18,8 @@ function App() {
             <HeaderComponent></HeaderComponent>
             <Routes>
                 <Route path="catalog" element={<CatalogComponent />} />
-                <Route path="phone/:id" element={<HeaderComponent />} />
-                <Route path="cart" element={<HeaderComponent />} />
+                <Route path="catalog/:id" element={<ProductComponent />} />
+                <Route path="cart" element={<CartComponent />} />
             </Routes>
         </>
     );
