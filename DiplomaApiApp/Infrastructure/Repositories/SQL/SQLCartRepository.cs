@@ -18,16 +18,6 @@ namespace Infrastructure.Repositories.SQL
             _db = db;
         }
 
-        public CartModel GetByUserId(int userId)
-        {
-            var result = _db.Carts.FirstOrDefault(c => c.UserId == userId);
-
-            if (result == null)
-            {
-                throw new ArgumentNullException("Cart nor found.");
-            }
-
-            return result;
-        }
+        public IEnumerable<ProductModel> GetCartByUserId(int userId) => _db.Carts.FirstOrDefault(c => c.UserId == userId) !.Products;
     }
 }

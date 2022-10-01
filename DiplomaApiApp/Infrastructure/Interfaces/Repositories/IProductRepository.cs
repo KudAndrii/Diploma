@@ -10,6 +10,6 @@ namespace Infrastructure.Interfaces.Repositories
     public interface IProductRepository
     {
         public ProductModel GetById(int id);
-        public IEnumerable<ProductModel> GetPage(int page, int categoryId);
+        public IQueryable<ProductModel> GetPage(int pageIndex);
     }
 }

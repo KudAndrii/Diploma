@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Models;
 
-namespace Infrastructure.Interfaces.Repositories
+namespace Infrastructure.Interfaces.Services
 {
-    public interface ICartRepository
+    public interface ICartService
     {
         public IEnumerable<ProductModel> GetCartByUserId(int userId);
     }

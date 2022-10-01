@@ -19,21 +19,8 @@ namespace Infrastructure.Repositories.SQL
             _db = db;
         }
 
-        public ProductModel GetById(int id)
-        {
-            var result = _db.Products.FirstOrDefault(p => p.ProductId == id);
+        public ProductModel GetById(int id) => _db.Products.FirstOrDefault(p => p.ProductId == id) !;
 
-            if (result == null)
-            {
-                throw new ArgumentNullException("Product not found.");
-            }
-
-            return result;
-        }
-
-        public IEnumerable<ProductModel> GetPage(int page, int categoryId)
-        {
-            return _db.Products.Where(p => p.CategoryId == categoryId).Skip(page * _limit).Take(_limit).ToList();
-        }
+        public IQueryable<ProductModel> GetPage(int pageIndex) => _db.Products.Skip(pageIndex * _limit).Take(_limit).AsQueryable();
     }
 }

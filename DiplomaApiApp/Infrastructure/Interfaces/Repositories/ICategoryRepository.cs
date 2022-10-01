@@ -9,6 +9,6 @@ namespace Infrastructure.Interfaces.Repositories
 {
     public interface ICategoryRepository
     {
-        public IEnumerable<CategoryModel> GetAll();
+        public Task<IEnumerable<CategoryModel>> GetAll();
     }
 }

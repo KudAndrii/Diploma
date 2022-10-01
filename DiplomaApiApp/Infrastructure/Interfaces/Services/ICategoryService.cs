@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Models;
 
-namespace Infrastructure.Interfaces.Repositories
+namespace Infrastructure.Interfaces.Services
 {
-    public interface ICartRepository
+    public interface ICategoryService
     {
-        public IEnumerable<ProductModel> GetCartByUserId(int userId);
+        public Task<IEnumerable<CategoryModel>> GetAll();
     }
 }
