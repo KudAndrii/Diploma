@@ -30,11 +30,11 @@ namespace Infrastructure.Services
             return result;
         }
 
-        public List<ProductModel> GetPage(int pageIndex, int? categoryId = null, bool descSort = false)
+        public List<ProductModel> GetPage(int pageIndex, int categoryId, bool descSort)
         {
             var products = _unitOfWork.ProductRepository.GetPage(pageIndex);
 
-            if (categoryId != null)
+            if (categoryId != -1)
             {
                 products.Where(p => p.CategoryId == categoryId);
             }

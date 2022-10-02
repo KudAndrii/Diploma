@@ -34,6 +34,14 @@ namespace Infrastructure.DbContexts
         public virtual DbSet<CategoryModel> Categories { get; set; } = null!;
         public virtual DbSet<CartModel> Carts { get; set; } = null!;
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(_connectionString!);
+            }
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());

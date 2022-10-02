@@ -11,11 +11,8 @@ namespace Infrastructure.Models
     public class UserModel
     {
         public int UserId { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
+        public string? Login { get; set; }
         public int Password { get; set; }
-        public int CartId { get; set; }
         public CartModel? Cart { get; set; }
     }
 }

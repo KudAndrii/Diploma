@@ -1,3 +1,4 @@
+using DiplomaApiApp.Models;
 using Infrastructure.Interfaces.Services;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +24,10 @@ namespace DiplomaApiApp.Controllers
             return _productService.GetById(id);
         }
 
-        [HttpGet]
-        public IEnumerable<ProductModel> GetPage([FromRoute] int pageIndex, [FromBody] int? categoryId, [FromBody] bool descSort)
+        [HttpGet("pageIndex")]
+        public IEnumerable<ProductModel> GetPage([FromRoute] int pageIndex, [FromBody] PageRequestModel pageModel)
         {
-            return _productService.GetPage(pageIndex, categoryId, descSort);
+            return _productService.GetPage(pageIndex, pageModel.CategoryId, pageModel.DescSort);
         }
     }
 }

@@ -15,16 +15,9 @@ namespace Infrastructure.Configurations
         {
             builder.HasKey(p => p.UserId);
 
-            builder.Property(p => p.FirstName)
+            builder.Property(p => p.Login)
                 .IsRequired()
                 .HasMaxLength(50);
-
-            builder.Property(p => p.LastName)
-                .IsRequired()
-                .HasMaxLength(50);
-
-            builder.Property(p => p.Email)
-                .IsRequired();
 
             builder.Property(p => p.Password)
                 .IsRequired();
