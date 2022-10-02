@@ -8,17 +8,17 @@ namespace DiplomaApiApp.Controllers
     [Route("[controller]")]
     public class CartController : Controller
     {
-        private readonly ILogger<ProductsController> _logger;
+        private readonly ILogger<CartController> _logger;
         private readonly ICartService _cartService;
 
-        public CartController(ILogger<ProductsController> logger, ICartService cartService)
+        public CartController(ILogger<CartController> logger, ICartService cartService)
         {
             _logger = logger;
             _cartService = cartService;
         }
 
-        [HttpGet("userId")]
-        public IEnumerable<ProductModel> Get([FromRoute] int userId)
+        [HttpGet("{userId}")]
+        public IEnumerable<ProductModel> Get(int userId)
         {
             return _cartService.GetProductsFromCartByUserId(userId);
         }

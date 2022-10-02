@@ -1,4 +1,6 @@
 using Infrastructure.Interfaces;
+using Infrastructure.Interfaces.Services;
+using Infrastructure.Services;
 using Infrastructure.UnitsOfWork;
 
 namespace DiplomaApiApp
@@ -10,6 +12,9 @@ namespace DiplomaApiApp
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddSingleton<IUnitOfWork, SQLUnitOfWork>();
+            builder.Services.AddScoped<ICartService, CartService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             builder.Services.AddControllers();
 

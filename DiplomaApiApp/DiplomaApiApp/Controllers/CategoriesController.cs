@@ -8,10 +8,10 @@ namespace DiplomaApiApp.Controllers
     [Route("[controller]")]
     public class CategoriesController : Controller
     {
-        private readonly ILogger<ProductsController> _logger;
+        private readonly ILogger<CategoriesController> _logger;
         private readonly ICategoryService _categoryService;
 
-        public CategoriesController(ILogger<ProductsController> logger, ICategoryService categoryService)
+        public CategoriesController(ILogger<CategoriesController> logger, ICategoryService categoryService)
         {
             _logger = logger;
             _categoryService = categoryService;
