@@ -21,6 +21,6 @@ namespace Infrastructure.Repositories.SQL
 
         public ProductModel GetById(int id) => _db.Products.FirstOrDefault(p => p.ProductId == id) !;
 
-        public IQueryable<ProductModel> GetPage(int pageIndex) => _db.Products.Skip(pageIndex * _limit).Take(_limit).AsQueryable();
+        public IQueryable<ProductModel> GetPage(int pageIndex) => _db.Products.Skip((pageIndex - 1) * _limit).Take(_limit).AsQueryable();
     }
 }
