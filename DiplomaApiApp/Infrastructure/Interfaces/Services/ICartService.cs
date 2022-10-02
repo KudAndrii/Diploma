@@ -9,6 +9,6 @@ namespace Infrastructure.Interfaces.Services
 {
     public interface ICartService
     {
-        public IEnumerable<ProductModel> GetCartByUserId(int userId);
+        public List<ProductModel> GetProductsFromCartByUserId(int userId);
     }
 }

@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
 	<CodeAnalysisRuleSet>settings.ruleset</CodeAnalysisRuleSet>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <NoWarn>CS0659</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

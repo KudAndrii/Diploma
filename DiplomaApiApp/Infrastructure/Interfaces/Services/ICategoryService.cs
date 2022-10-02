@@ -9,6 +9,6 @@ namespace Infrastructure.Interfaces.Services
 {
     public interface ICategoryService
     {
-        public Task<IEnumerable<CategoryModel>> GetAll();
+        public List<CategoryModel> GetAll();
     }
 }

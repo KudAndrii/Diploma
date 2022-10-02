@@ -30,7 +30,7 @@ namespace Infrastructure.Services
             return result;
         }
 
-        public IEnumerable<ProductModel> GetPage(int pageIndex, int? categoryId = null, bool descSort = false)
+        public List<ProductModel> GetPage(int pageIndex, int? categoryId = null, bool descSort = false)
         {
             var products = _unitOfWork.ProductRepository.GetPage(pageIndex);
 

@@ -36,5 +36,20 @@ namespace Infrastructure.Models
         }
 
         public string? Description { get; set; }
+
+        public override bool Equals(object? obj)
+        {
+            bool result = false;
+            ProductModel? prod;
+
+            if (obj is ProductModel)
+            {
+                prod = obj as ProductModel;
+                result = ProductId == prod?.ProductId ? true : false;
+                result = Name == prod?.Name ? true : false;
+            }
+
+            return result;
+        }
     }
 }

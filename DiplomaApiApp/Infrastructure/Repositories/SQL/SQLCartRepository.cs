@@ -18,6 +18,6 @@ namespace Infrastructure.Repositories.SQL
             _db = db;
         }
 
-        public IEnumerable<ProductModel> GetCartByUserId(int userId) => _db.Carts.FirstOrDefault(c => c.UserId == userId) !.Products;
+        public CartModel GetCartByUserId(int userId) => _db.Carts.FirstOrDefault(c => c.UserId == userId) !;
     }
 }

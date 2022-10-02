@@ -18,7 +18,7 @@ namespace Infrastructure.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<ProductModel> GetCartByUserId(int userId)
+        public List<ProductModel> GetProductsFromCartByUserId(int userId)
         {
             var result = _unitOfWork.CartRepository.GetCartByUserId(userId);
 
@@ -27,8 +27,7 @@ namespace Infrastructure.Services
                 throw new ArgumentNullException("Cart nor found.");
             }
 
-            return result;
+            return result.Products;
         }
-    }
     }
 }

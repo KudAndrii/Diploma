@@ -18,7 +18,6 @@ namespace Infrastructure.UnitsOfWork
         private SQLProductRepository? _productRepository;
         private SQLCartRepository? _cartRepository;
         private SQLCategoryRepository? _categoryRepository;
-
         ~SQLUnitOfWork()
         {
             Dispose(false);
@@ -52,6 +51,7 @@ namespace Infrastructure.UnitsOfWork
                 {
                     _productRepository = null;
                     _cartRepository = null;
+                    _categoryRepository = null;
                 }
 
                 _db.Dispose();

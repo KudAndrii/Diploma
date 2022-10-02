@@ -18,6 +18,6 @@ namespace Infrastructure.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<CategoryModel> GetAll() => _unitOfWork.CategoryRepository.GetAll();
+        public List<CategoryModel> GetAll() => _unitOfWork.CategoryRepository.GetAll();
     }
 }
