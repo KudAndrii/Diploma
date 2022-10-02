@@ -18,6 +18,20 @@ namespace Infrastructure.Configurations
             builder.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            builder.HasData(new[]
+            {
+                new CategoryModel
+                {
+                    CategoryId = 1,
+                    Name = "First"
+                },
+                new CategoryModel
+                {
+                    CategoryId = 2,
+                    Name = "Second"
+                }
+            });
         }
     }
 }

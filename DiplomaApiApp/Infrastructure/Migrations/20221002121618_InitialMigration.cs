@@ -66,17 +66,11 @@ namespace Infrastructure.Migrations
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     ShortDescription = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    CartModelCartId = table.Column<int>(type: "int", nullable: true)
+                    Description = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.ProductId);
-                    table.ForeignKey(
-                        name: "FK_Products_Carts_CartModelCartId",
-                        column: x => x.CartModelCartId,
-                        principalTable: "Carts",
-                        principalColumn: "CartId");
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -89,11 +83,6 @@ namespace Infrastructure.Migrations
                 name: "IX_Carts_UserId",
                 table: "Carts",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_CartModelCartId",
-                table: "Products",
-                column: "CartModelCartId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",

@@ -16,24 +16,7 @@ namespace Infrastructure.Models
         public int CategoryId { get; set; }
         public CategoryModel? Category { get; set; }
         public double Price { get; set; }
-        public string ShortDescription
-        {
-            get
-            {
-                if (ShortDescription == null)
-                {
-                    return Description!.Substring(0, 50);
-                }
-                else
-                {
-                    return ShortDescription;
-                }
-            }
-            set
-            {
-                ShortDescription = value;
-            }
-        }
+        public string? ShortDescription { get; set; }
 
         public string? Description { get; set; }
 
