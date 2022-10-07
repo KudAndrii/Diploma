@@ -24,10 +24,9 @@ namespace Infrastructure.Configurations
 
             builder.HasData(new UserModel()
             {
-                UserId = 0,
+                UserId = 1,
                 Login = "user",
                 Password = "1234".GetHashCode(),
-                CartId = 0
             });
         }
     }

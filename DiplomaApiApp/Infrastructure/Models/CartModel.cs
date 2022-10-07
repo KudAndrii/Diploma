@@ -13,12 +13,12 @@ namespace Infrastructure.Models
     {
         public CartModel()
         {
-            Products = new List<ProductModel>();
+            ProductCarts = new List<ProductCartModel>();
         }
 
         public int CartId { get; set; }
         public int UserId { get; set; }
         public UserModel? User { get; set; }
-        public List<ProductModel> Products { get; set; }
+        public List<ProductCartModel>? ProductCarts { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace Infrastructure.Services
                 throw new ArgumentNullException("Cart nor found.");
             }
 
-            return result.Products;
+            return new List<ProductModel>();
         }
     }
 }

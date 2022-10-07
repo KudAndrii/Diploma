@@ -17,8 +17,8 @@ namespace Infrastructure.Configurations
 
             builder.HasData(new CartModel()
             {
-                CartId = 0,
-                UserId = 0
+                CartId = 1,
+                UserId = 1
             });
         }
     }

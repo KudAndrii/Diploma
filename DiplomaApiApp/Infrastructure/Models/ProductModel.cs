@@ -12,7 +12,7 @@ namespace Infrastructure.Models
     {
         public ProductModel()
         {
-            Carts = new List<CartModel>();
+            ProductCarts = new List<ProductCartModel>();
         }
 
         public int ProductId { get; set; }
@@ -20,7 +20,7 @@ namespace Infrastructure.Models
         public string? Img { get; set; }
         public int CategoryId { get; set; }
         public CategoryModel? Category { get; set; }
-        public List<CartModel>? Carts { get; set; }
+        public List<ProductCartModel>? ProductCarts { get; set; }
         public double Price { get; set; }
         public string? OS { get; set; }
 

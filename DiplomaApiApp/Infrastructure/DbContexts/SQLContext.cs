@@ -50,6 +50,11 @@ namespace Infrastructure.DbContexts
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new CartConfiguration());
             modelBuilder.ApplyConfiguration(new ProductCartConfiguration());
+
+            modelBuilder.Entity<UserModel>()
+                .HasOne(u => u.Cart)
+                .WithOne(c => c.User)
+                .HasForeignKey<CartModel>(c => c.UserId);
         }
     }
 }

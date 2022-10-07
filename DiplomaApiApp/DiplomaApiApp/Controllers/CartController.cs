@@ -26,13 +26,13 @@ namespace DiplomaApiApp.Controllers
         [HttpPut("{userId}")]
         public IActionResult AddProduct([FromRoute] int userId, [FromBody] int productId)
         {
-
+            return BadRequest();
         }
 
         [HttpDelete("{userId}")]
         public IActionResult DeleteProduct([FromRoute] int userId, [FromBody] int productId)
         {
-
+            return BadRequest();
         }
     }
 }
