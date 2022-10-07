@@ -24,12 +24,12 @@ namespace DiplomaApiApp.Controllers
             return _productService.GetById(id);
         }
 
-        [HttpPost("Page")]
-        public IEnumerable<ProductModel> GetPage([FromBody] PageRequestModel pageModel)
+        [HttpPost("Products")]
+        public IEnumerable<ProductModel> GetProducts([FromBody] PageRequestModel pageModel)
         {
             if (ModelState.IsValid)
             {
-                return _productService.GetPage(pageModel.PageIndex, pageModel.CategoryId, pageModel.DescSort);
+                return _productService.GetProductsPage(pageModel.PageIndex, pageModel.CategoryId, pageModel.DescSort);
             }
 
             return new List<ProductModel>();

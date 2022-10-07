@@ -30,25 +30,26 @@ namespace Infrastructure.Services
             return result;
         }
 
-        public List<ProductModel> GetPage(int pageIndex, int categoryId, bool descSort)
+        public List<ProductModel> GetProductsPage(int pageIndex, int categoryId, bool descSort)
         {
-            var products = _unitOfWork.ProductRepository.GetPage(pageIndex);
+            var products = _unitOfWork.ProductRepository.GetProductsPage(pageIndex);
 
             if (categoryId != -1)
             {
-                products.Where(p => p.CategoryId == categoryId);
+                products = products.Where(p => p.CategoryId == categoryId);
             }
 
             if (descSort == true)
             {
-                products.OrderByDescending(p => p.Price);
+                products = products.OrderByDescending(p => p.Price);
             }
             else
             {
-                products.OrderBy(p => p.Price);
+                products = products.OrderBy(p => p.Price);
             }
 
-            return products.ToList();
+            var result = products.ToList();
+            return result;
         }
     }
 }

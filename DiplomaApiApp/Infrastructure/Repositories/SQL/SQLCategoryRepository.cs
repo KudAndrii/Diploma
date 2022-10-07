@@ -18,6 +18,11 @@ namespace Infrastructure.Repositories.SQL
             _db = db;
         }
 
-        public List<CategoryModel> GetAll() => _db.Categories.Where(c => true).ToList();
+        public List<CategoryModel> GetAll()
+        {
+            var result = _db.Categories.Where(c => true).ToList();
+
+            return result;
+        }
     }
 }

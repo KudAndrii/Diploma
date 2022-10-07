@@ -10,6 +10,6 @@ namespace Infrastructure.Interfaces.Services
     public interface IProductService
     {
         public ProductModel GetById(int id);
-        public List<ProductModel> GetPage(int pageIndex, int categoryId, bool descSort);
+        public List<ProductModel> GetProductsPage(int pageIndex, int categoryId, bool descSort);
     }
 }
