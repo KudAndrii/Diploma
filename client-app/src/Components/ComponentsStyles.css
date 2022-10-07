@@ -1,0 +1,119 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 0 1px 15px 0 rgb(193, 193, 193);
+    height: 100px;
+}
+
+.header:hover {
+    background-color: rgb(213, 213, 213);
+}
+
+h1 header {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.navbar {
+    padding-top: 0;
+}
+
+.nav-link:hover {
+    color: rgb(0, 0, 0);
+}
+
+.headerDKLogo {
+    height: 80px;
+    padding-left: 50px;
+    margin-top: 10px;
+}
+
+.login {
+    text-align: center;
+    margin: auto;
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.card {
+    width: 18rem;
+}
+
+.card:hover {
+    background-color: rgb(213, 213, 213);
+    box-shadow: 0 1px 15px 0 rgb(193, 193, 193);
+}
+
+.catalogGeneral {
+    display: flex;
+}
+
+.catalog {
+    width: 90%;
+}
+
+.tools {
+    width: 10%;
+    padding-top: 3rem;
+    margin-left: 10px;
+}
+
+.category {
+    display: block;
+}
+
+.sort_icon {
+    display: block;
+    height: 40px;
+    padding: 5px;
+    border-radius: 30%;
+    margin: 0 0 20px auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.sort_icon:hover {
+    background-color: rgb(213, 213, 213);
+}
+
+.pageing {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow {
+    display: block;
+    height: 45px;
+    padding: 5px;
+    border-radius: 30%;
+    background-color: rgb(255, 255, 255);
+}
+
+.arrow:hover {
+    background-color: rgb(213, 213, 213);
+}
+
+.productPage {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+}
+
+.productGeneral {
+    width: 50%;
+    margin-left: 50px;
+}
+
+.productImage {
+    margin-bottom: 20px;
+}
+
+.productDescription {
+    width: 50%;
+}
+
+.emptyMessage {
+    text-align: center;
+    margin-top: 3rem;
+}
