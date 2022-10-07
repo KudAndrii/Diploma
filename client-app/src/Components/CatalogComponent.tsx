@@ -24,11 +24,10 @@ const CatapogComponent = observer((): JSX.Element => {
         const everyTime = async () => {
             const categ = await GetProductCategories();
             setCategories(categ);
-            console.log(categories);
         };
 
         everyTime();
-    });
+    }, []);
 
     useEffect(() => {
         const firstTime = async () => {
@@ -38,7 +37,6 @@ const CatapogComponent = observer((): JSX.Element => {
                 sortFlag
             );
             setProductList(products);
-            console.log(productList);
         };
 
         firstTime();
@@ -58,7 +56,7 @@ const CatapogComponent = observer((): JSX.Element => {
                                     setCategory(x.categoryId);
                                     const products = await GetProductsPage(
                                         pageIndex,
-                                        category,
+                                        x.categoryId,
                                         sortFlag
                                     );
                                     setProductList(products);

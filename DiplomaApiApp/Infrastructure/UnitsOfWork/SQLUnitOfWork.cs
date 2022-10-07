@@ -14,10 +14,16 @@ namespace Infrastructure.UnitsOfWork
     {
         private bool _disposed = false;
 
-        private SQLContext _db = new SQLContext();
+        private SQLContext _db;
         private SQLProductRepository? _productRepository;
         private SQLCartRepository? _cartRepository;
         private SQLCategoryRepository? _categoryRepository;
+
+        public SQLUnitOfWork(SQLContext context)
+        {
+            _db = context;
+        }
+
         ~SQLUnitOfWork()
         {
             Dispose(false);
