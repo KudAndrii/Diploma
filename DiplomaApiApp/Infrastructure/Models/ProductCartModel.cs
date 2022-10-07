@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Models
 {
-    [Table("Users")]
-    public class UserModel
+    [Table("ProductCarts")]
+    public class ProductCartModel
     {
-        public int UserId { get; set; }
-        public string? Login { get; set; }
-        public int Password { get; set; }
+        public int ProductCartId { get; set; }
+        public int ProductId { get; set; }
         public int CartId { get; set; }
+        public ProductModel? Product { get; set; }
         public CartModel? Cart { get; set; }
     }
 }

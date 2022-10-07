@@ -4,6 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import CatalogComponent from "./Components/CatalogComponent";
 import ProductPageComponent from "./Components/ProductPageComponent";
 import CartComponent from "./Components/CartComponent";
+import { UserService } from "./Services/UserService";
+
+export const userService = new UserService();
 
 function App() {
     return (

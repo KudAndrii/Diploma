@@ -4,7 +4,7 @@ type Product = {
     img: string | null;
     categoryId: number;
     price: number;
-    shortDescription: string | null;
+    os: string | null;
     description: string | null;
 };
 

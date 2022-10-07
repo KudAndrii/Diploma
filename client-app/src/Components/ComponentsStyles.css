@@ -5,6 +5,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     box-shadow: 0 1px 15px 0 rgb(193, 193, 193);
     height: 100px;
+    width: 100%;
 }
 
 .header:hover {
@@ -30,7 +31,7 @@ h1 header {
     margin-top: 10px;
 }
 
-.login {
+.headerButtons {
     text-align: center;
     margin: auto;
     margin-left: 0;
@@ -78,8 +79,11 @@ h1 header {
 }
 
 .pageing {
+    position: fixed;
     display: flex;
     justify-content: center;
+    bottom: 40px;
+    width: 100%;
 }
 
 .arrow {

@@ -9,17 +9,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Configurations
 {
-    public class CartConfiguration : IEntityTypeConfiguration<CartModel>
+    public class ProductCartConfiguration : IEntityTypeConfiguration<ProductCartModel>
     {
-        public void Configure(EntityTypeBuilder<CartModel> builder)
+        public void Configure(EntityTypeBuilder<ProductCartModel> builder)
         {
-            builder.HasKey(p => p.CartId);
-
-            builder.HasData(new CartModel()
-            {
-                CartId = 0,
-                UserId = 0
-            });
+            builder.HasKey(m => m.ProductCartId);
         }
     }
 }

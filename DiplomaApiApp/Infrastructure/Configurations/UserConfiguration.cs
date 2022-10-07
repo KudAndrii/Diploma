@@ -21,6 +21,14 @@ namespace Infrastructure.Configurations
 
             builder.Property(p => p.Password)
                 .IsRequired();
+
+            builder.HasData(new UserModel()
+            {
+                UserId = 0,
+                Login = "user",
+                Password = "1234".GetHashCode(),
+                CartId = 0
+            });
         }
     }
 }

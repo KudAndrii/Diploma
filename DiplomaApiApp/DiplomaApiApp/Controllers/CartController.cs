@@ -22,5 +22,17 @@ namespace DiplomaApiApp.Controllers
         {
             return _cartService.GetProductsFromCartByUserId(userId);
         }
+
+        [HttpPut("{userId}")]
+        public IActionResult AddProduct([FromRoute] int userId, [FromBody] int productId)
+        {
+
+        }
+
+        [HttpDelete("{userId}")]
+        public IActionResult DeleteProduct([FromRoute] int userId, [FromBody] int productId)
+        {
+
+        }
     }
 }

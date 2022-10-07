@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 import ProductCardComponent from "./ProductCardComponent";
-import Sort_down from "../icons/sort-alpha-down.svg";
-import Sort_up from "../icons/sort-alpha-up-alt.svg";
+import Sort_order from "../icons/sort-order.png";
+import Sort_desc from "../icons/sort-desc.png";
+import Sort_asc from "../icons/sort-asc.png";
 import Arrow_left from "../icons/left-arrow.png";
 import Arrow_right from "../icons/right-arrow.png";
 import { useEffect, useState } from "react";
@@ -13,6 +14,8 @@ import ProductType from "../Types/ProductType";
 import GetProductsPage from "../Requests/GetProductsPage";
 
 const CatapogComponent = observer((): JSX.Element => {
+    const [sortIcon, setSortIcon] = useState(Sort_order);
+
     const [pageIndex, setPageIndex] = useState(1);
     const [category, setCategory] = useState(-1);
     const [sortFlag, setSortFlag] = useState(false);
@@ -21,16 +24,10 @@ const CatapogComponent = observer((): JSX.Element => {
     const [productList, setProductList] = useState<ProductType[]>();
 
     useEffect(() => {
-        const everyTime = async () => {
+        const firstTime = async () => {
             const categ = await GetProductCategories();
             setCategories(categ);
-        };
 
-        everyTime();
-    }, []);
-
-    useEffect(() => {
-        const firstTime = async () => {
             const products = await GetProductsPage(
                 pageIndex,
                 category,
@@ -69,7 +66,7 @@ const CatapogComponent = observer((): JSX.Element => {
                 <div className="catalog">
                     <div className="container my-5">
                         <img
-                            src={sortFlag === true ? Sort_down : Sort_up}
+                            src={sortIcon}
                             className="sort_icon"
                             onClick={async () => {
                                 if (sortFlag) {
@@ -82,6 +79,7 @@ const CatapogComponent = observer((): JSX.Element => {
                                     setProductList(products);
 
                                     setSortFlag(false);
+                                    setSortIcon(Sort_desc);
                                 } else {
                                     // sort desc request
                                     const products = await GetProductsPage(
@@ -92,6 +90,7 @@ const CatapogComponent = observer((): JSX.Element => {
                                     setProductList(products);
 
                                     setSortFlag(true);
+                                    setSortIcon(Sort_asc);
                                 }
                             }}
                         ></img>
@@ -111,45 +110,45 @@ const CatapogComponent = observer((): JSX.Element => {
                                 ))}
                         </div>
                     </div>
-                    <div className="pageing">
-                        <img
-                            src={Arrow_left}
-                            className="arrow"
-                            onClick={async () => {
-                                // get previous page
-                                if (pageIndex === 1) {
-                                } else {
-                                    setPageIndex(pageIndex - 1);
-
-                                    const products = await GetProductsPage(
-                                        pageIndex,
-                                        category,
-                                        sortFlag
-                                    );
-                                    setProductList(products);
-                                }
-                            }}
-                        ></img>
-                        <img
-                            src={Arrow_right}
-                            className="arrow"
-                            onClick={async () => {
-                                // get next page
-                                if ((productList?.length as number) < 12) {
-                                } else {
-                                    setPageIndex(pageIndex + 1);
-
-                                    const products = await GetProductsPage(
-                                        pageIndex,
-                                        category,
-                                        sortFlag
-                                    );
-                                    setProductList(products);
-                                }
-                            }}
-                        ></img>
-                    </div>
                 </div>
+            </div>
+            <div className="pageing">
+                <img
+                    src={Arrow_left}
+                    className="arrow"
+                    onClick={async () => {
+                        // get previous page
+                        if (pageIndex === 1) {
+                        } else {
+                            setPageIndex(pageIndex - 1);
+
+                            const products = await GetProductsPage(
+                                pageIndex,
+                                category,
+                                sortFlag
+                            );
+                            setProductList(products);
+                        }
+                    }}
+                ></img>
+                <img
+                    src={Arrow_right}
+                    className="arrow"
+                    onClick={async () => {
+                        // get next page
+                        if ((productList?.length as number) < 12) {
+                        } else {
+                            setPageIndex(pageIndex + 1);
+
+                            const products = await GetProductsPage(
+                                pageIndex,
+                                category,
+                                sortFlag
+                            );
+                            setProductList(products);
+                        }
+                    }}
+                ></img>
             </div>
             <Outlet />
         </>
