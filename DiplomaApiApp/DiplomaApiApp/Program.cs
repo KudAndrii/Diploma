@@ -15,12 +15,20 @@ namespace DiplomaApiApp
             builder.Services.AddScoped<ICartService, CartService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddAutoMapper(typeof(Program));
 
             builder.Services.AddControllers();
 
             var app = builder.Build();
 
             app.UseHttpsRedirection();
+
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+            });
 
             app.UseAuthorization();
 

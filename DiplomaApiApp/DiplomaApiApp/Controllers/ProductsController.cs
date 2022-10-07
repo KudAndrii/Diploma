@@ -1,4 +1,5 @@
-﻿using DiplomaApiApp.Models;
+﻿using AutoMapper;
+using DiplomaApiApp.Models;
 using Infrastructure.Interfaces.Services;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -11,28 +12,40 @@ namespace DiplomaApiApp.Controllers
     {
         private readonly ILogger<ProductsController> _logger;
         private readonly IProductService _productService;
+        private readonly IMapper _mapper;
 
-        public ProductsController(ILogger<ProductsController> logger, IProductService productService)
+        public ProductsController(ILogger<ProductsController> logger, IMapper mapper, IProductService productService)
         {
             _logger = logger;
+            _mapper = mapper;
             _productService = productService;
         }
 
         [HttpGet("{id}")]
-        public ProductModel GetProduct(int id)
+        public ProductResponseModel GetProduct(int id)
         {
-            return _productService.GetById(id);
+            var product = _productService.GetById(id);
+            var result = _mapper.Map<ProductResponseModel>(product);
+
+            return result;
         }
 
-        [HttpPost("Products")]
-        public IEnumerable<ProductModel> GetProducts([FromBody] PageRequestModel pageModel)
+        [HttpPost("ProductsPage")]
+        public IEnumerable<ProductResponseModel> GetProducts([FromBody] PageRequestModel pageModel)
         {
             if (ModelState.IsValid)
             {
-                return _productService.GetProductsPage(pageModel.PageIndex, pageModel.CategoryId, pageModel.DescSort);
+                var products = _productService.GetProductsPage(pageModel.PageIndex, pageModel.CategoryId, pageModel.DescSort);
+                var result = new List<ProductResponseModel>(products.Count);
+                foreach (var product in products)
+                {
+                    result.Add(_mapper.Map<ProductModel, ProductResponseModel>(product));
+                }
+
+                return result;
             }
 
-            return new List<ProductModel>();
+            return new List<ProductResponseModel>();
         }
     }
 }

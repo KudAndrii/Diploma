@@ -1,32 +1,70 @@
 import { observer } from "mobx-react-lite";
-import { productRangeService } from "../App";
-import { productCategoriesService } from "../App";
 import ProductCardComponent from "./ProductCardComponent";
 import Sort_down from "../icons/sort-alpha-down.svg";
 import Sort_up from "../icons/sort-alpha-up-alt.svg";
 import Arrow_left from "../icons/left-arrow.png";
 import Arrow_right from "../icons/right-arrow.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./ComponentsStyles.css";
+import CategoryType from "../Types/CategoryType";
+import GetProductCategories from "../Requests/GetProductCategories";
+import ProductType from "../Types/ProductType";
+import GetProductsPage from "../Requests/GetProductsPage";
 
 const CatapogComponent = observer((): JSX.Element => {
-    const [sortFlag, setSortFlag] = useState(true);
+    const [pageIndex, setPageIndex] = useState(1);
+    const [category, setCategory] = useState(-1);
+    const [sortFlag, setSortFlag] = useState(false);
+
+    const [categories, setCategories] = useState<CategoryType[]>();
+    const [productList, setProductList] = useState<ProductType[]>();
+
+    useEffect(() => {
+        const everyTime = async () => {
+            const categ = await GetProductCategories();
+            setCategories(categ);
+            console.log(categories);
+        };
+
+        everyTime();
+    });
+
+    useEffect(() => {
+        const firstTime = async () => {
+            const products = await GetProductsPage(
+                pageIndex,
+                category,
+                sortFlag
+            );
+            setProductList(products);
+            console.log(productList);
+        };
+
+        firstTime();
+    }, []);
 
     return (
         <>
             <div className="catalogGeneral">
                 <div className="tools">
-                    {productCategoriesService.categories &&
-                        productCategoriesService.categories.map((x, index) => (
+                    {categories &&
+                        categories.map((x, index) => (
                             <h4
                                 className="category btn btn-outline-dark"
                                 key={index}
-                                onClick={() => {
+                                onClick={async () => {
                                     // products by category request
+                                    setCategory(x.categoryId);
+                                    const products = await GetProductsPage(
+                                        pageIndex,
+                                        category,
+                                        sortFlag
+                                    );
+                                    setProductList(products);
                                 }}
                             >
-                                {x}
+                                {x.name}
                             </h4>
                         ))}
                 </div>
@@ -35,47 +73,81 @@ const CatapogComponent = observer((): JSX.Element => {
                         <img
                             src={sortFlag === true ? Sort_down : Sort_up}
                             className="sort_icon"
-                            onClick={() => {
+                            onClick={async () => {
                                 if (sortFlag) {
                                     // sort asc request
+                                    const products = await GetProductsPage(
+                                        pageIndex,
+                                        category,
+                                        sortFlag
+                                    );
+                                    setProductList(products);
+
                                     setSortFlag(false);
                                 } else {
                                     // sort desc request
+                                    const products = await GetProductsPage(
+                                        pageIndex,
+                                        category,
+                                        sortFlag
+                                    );
+                                    setProductList(products);
+
                                     setSortFlag(true);
                                 }
                             }}
                         ></img>
                         <div className="row mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-                            {productRangeService.productList &&
-                                productRangeService.productList.map(
-                                    (x, index) => (
-                                        <Link
-                                            className="nav-link"
-                                            to={"/catalog/" + x.id}
-                                        >
-                                            <div key={index}>
-                                                <ProductCardComponent
-                                                    productType={x}
-                                                ></ProductCardComponent>
-                                            </div>
-                                        </Link>
-                                    )
-                                )}
+                            {productList &&
+                                productList.map((x, index) => (
+                                    <Link
+                                        className="nav-link"
+                                        to={"/catalog/" + x.productId}
+                                    >
+                                        <div key={index}>
+                                            <ProductCardComponent
+                                                productType={x}
+                                            ></ProductCardComponent>
+                                        </div>
+                                    </Link>
+                                ))}
                         </div>
                     </div>
                     <div className="pageing">
                         <img
                             src={Arrow_left}
                             className="arrow"
-                            onClick={() => {
+                            onClick={async () => {
                                 // get previous page
+                                if (pageIndex === 1) {
+                                } else {
+                                    setPageIndex(pageIndex - 1);
+
+                                    const products = await GetProductsPage(
+                                        pageIndex,
+                                        category,
+                                        sortFlag
+                                    );
+                                    setProductList(products);
+                                }
                             }}
                         ></img>
                         <img
                             src={Arrow_right}
                             className="arrow"
-                            onClick={() => {
+                            onClick={async () => {
                                 // get next page
+                                if ((productList?.length as number) < 12) {
+                                } else {
+                                    setPageIndex(pageIndex + 1);
+
+                                    const products = await GetProductsPage(
+                                        pageIndex,
+                                        category,
+                                        sortFlag
+                                    );
+                                    setProductList(products);
+                                }
                             }}
                         ></img>
                     </div>

@@ -1,14 +1,22 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import "./ComponentsStyles.css";
-import { productRangeService } from "../App";
 import { useParams } from "react-router";
-import "./ComponentsStyles.css";
 import { Button } from "react-bootstrap";
+import GetProductById from "../Requests/GetProductById";
+import ProductType from "../Types/ProductType";
 
 const ProductPageComponent: FC = (): JSX.Element => {
     const { id } = useParams();
-    const product = productRangeService.productList.find((prod) => {
-        return prod.id === Number(id);
+    const [product, setProduct] = useState<ProductType | undefined>(undefined);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const prod = await GetProductById(Number(id));
+
+            setProduct(prod);
+        };
+
+        fetchData();
     });
 
     return (
@@ -19,7 +27,7 @@ const ProductPageComponent: FC = (): JSX.Element => {
                     <h3 className="productName">{product?.name}</h3>
                 </div>
                 <div className="productDescription">
-                    <h5 className="card-text">{product?.category}</h5>
+                    <h5 className="card-text">{product?.categoryId}</h5>
                     <Button
                         className="btn marginRightButton"
                         onClick={() => {}}

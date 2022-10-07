@@ -1,7 +1,14 @@
+import CategoryType from "./CategoryType";
+
 type Product = {
-    id: number;
+    productId: number;
     name: string;
-    category: string;
+    img: string | null;
+    categoryId: number;
+    category: CategoryType | null;
+    price: number;
+    shortDescription: string | null;
+    description: string | null;
 };
 
 export default Product;

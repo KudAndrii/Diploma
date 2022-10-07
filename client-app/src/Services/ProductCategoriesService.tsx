@@ -1,8 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import GetProductCategories from "../Requests/GetProductCategories";
+import CategoryType from "../Types/CategoryType";
 
-export class ProductCategoriesService {
-    categories: string[] = [];
+class ProductCategoriesService {
+    categories: CategoryType[] = [];
 
     constructor() {
         makeAutoObservable(this);
@@ -10,7 +11,7 @@ export class ProductCategoriesService {
         this.setCategories();
     }
 
-    private setCategories() {
-        this.categories = GetProductCategories();
+    private async setCategories() {
+        this.categories = await GetProductCategories();
     }
 }
