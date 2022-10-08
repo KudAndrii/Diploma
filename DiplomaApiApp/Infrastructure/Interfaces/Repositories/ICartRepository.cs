@@ -9,6 +9,8 @@ namespace Infrastructure.Interfaces.Repositories
 {
     public interface ICartRepository
     {
-        public CartModel GetCartByUserId(int userId);
+        public List<ProductModel> GetCartById(int cartId);
+        public void AddProductToCart(int cartId, int productId);
+        public bool RemoveProductFromCart(int cartId, int productId);
     }
 }

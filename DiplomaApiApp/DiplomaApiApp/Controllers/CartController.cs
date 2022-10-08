@@ -20,7 +20,10 @@ namespace DiplomaApiApp.Controllers
         [HttpGet("{userId}")]
         public IEnumerable<ProductModel> Get(int userId)
         {
+            /*
             return _cartService.GetProductsFromCartByUserId(userId);
+            */
+            throw new Exception();
         }
 
         [HttpPut("{userId}")]

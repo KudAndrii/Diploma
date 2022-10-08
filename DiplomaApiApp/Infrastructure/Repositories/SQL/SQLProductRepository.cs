@@ -12,7 +12,7 @@ namespace Infrastructure.Repositories.SQL
     public class SQLProductRepository : IProductRepository
     {
         private readonly SQLContext _db;
-        private int _limit = 12;
+        private int _limit = 6;
 
         public SQLProductRepository(SQLContext db)
         {
@@ -21,9 +21,18 @@ namespace Infrastructure.Repositories.SQL
 
         public ProductModel GetById(int id) => _db.Products.FirstOrDefault(p => p.ProductId == id) !;
 
-        public IQueryable<ProductModel> GetProductsPage(int pageIndex)
+        public IQueryable<ProductModel> GetProductsPage(int pageIndex, int categoryId)
         {
-            var result = _db.Products.Skip((pageIndex - 1) * _limit).Take(_limit).AsQueryable();
+            IQueryable<ProductModel> result;
+
+            if (categoryId == -1)
+            {
+                result = _db.Products.Skip((pageIndex - 1) * _limit).Take(_limit).AsQueryable();
+            }
+            else
+            {
+                result = _db.Products.Where(p => p.CategoryId == categoryId).Skip((pageIndex - 1) * _limit).Take(_limit).AsQueryable();
+            }
 
             return result;
         }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Infrastructure.DbContexts;
 using Infrastructure.Interfaces.Repositories;
 using Infrastructure.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories.SQL
 {
@@ -18,6 +19,37 @@ namespace Infrastructure.Repositories.SQL
             _db = db;
         }
 
-        public CartModel GetCartByUserId(int userId) => _db.Carts.FirstOrDefault(c => c.UserId == userId) !;
+        public List<ProductModel> GetCartById(int cartId)
+        {
+            List<ProductModel> result = _db.ProductCarts.Include(x => x.Product).Where(x => x.CartId == cartId).Select(x => x.Product).ToList() !;
+
+            return result;
+        }
+
+        public void AddProductToCart(int cartId, int productId)
+        {
+            var entity = new ProductCartModel()
+            {
+                CartId = cartId,
+                ProductId = productId
+            };
+
+            _db.ProductCarts.Add(entity);
+        }
+
+        public bool RemoveProductFromCart(int cartId, int productId)
+        {
+            bool result = false;
+
+            var entity = _db.ProductCarts.FirstOrDefault(x => x.CartId == cartId && x.ProductId == productId);
+
+            if (entity != null)
+            {
+                _db.ProductCarts.Remove(entity);
+                result = true;
+            }
+
+            return result;
+        }
     }
 }

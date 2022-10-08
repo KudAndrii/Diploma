@@ -18,8 +18,19 @@ namespace Infrastructure.Services
             _unitOfWork = unitOfWork;
         }
 
+        public void AddProductToCart(int cartId, int productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ProductModel> GetCartByUserId(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<ProductModel> GetProductsFromCartByUserId(int userId)
         {
+            /*
             var result = _unitOfWork.CartRepository.GetCartByUserId(userId);
 
             if (result == null)
@@ -28,6 +39,13 @@ namespace Infrastructure.Services
             }
 
             return new List<ProductModel>();
+            */
+            throw new Exception();
+        }
+
+        public bool RemoveProductFromCart(int cartId, int productId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

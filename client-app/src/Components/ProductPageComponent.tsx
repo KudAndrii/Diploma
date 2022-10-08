@@ -23,11 +23,17 @@ const ProductPageComponent: FC = (): JSX.Element => {
         <>
             <div className="productPage">
                 <div className="productGeneral">
-                    <img className="productImage" alt="product image" />
+                    <img
+                        src={product?.img}
+                        className="productImage"
+                        alt="product image"
+                    />
                     <h3 className="productName">{product?.name}</h3>
                 </div>
                 <div className="productDescription">
-                    <h5 className="card-text">{product?.categoryId}</h5>
+                    <h5 className="card-text">{product?.price + " ₴"}</h5>
+                    <p>{product?.os}</p>
+                    <p>{product?.processor}</p>
                     <Button
                         className="btn marginRightButton"
                         onClick={() => {}}

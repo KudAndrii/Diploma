@@ -51,8 +51,9 @@ const CatapogComponent = observer((): JSX.Element => {
                                 onClick={async () => {
                                     // products by category request
                                     setCategory(x.categoryId);
+                                    setPageIndex(1);
                                     const products = await GetProductsPage(
-                                        pageIndex,
+                                        1,
                                         x.categoryId,
                                         sortFlag
                                     );
@@ -118,12 +119,11 @@ const CatapogComponent = observer((): JSX.Element => {
                     className="arrow"
                     onClick={async () => {
                         // get previous page
-                        if (pageIndex === 1) {
-                        } else {
+                        if (pageIndex > 1) {
                             setPageIndex(pageIndex - 1);
 
                             const products = await GetProductsPage(
-                                pageIndex,
+                                pageIndex - 1,
                                 category,
                                 sortFlag
                             );
@@ -136,12 +136,11 @@ const CatapogComponent = observer((): JSX.Element => {
                     className="arrow"
                     onClick={async () => {
                         // get next page
-                        if ((productList?.length as number) < 12) {
-                        } else {
+                        if ((productList?.length as number) === 6) {
                             setPageIndex(pageIndex + 1);
 
                             const products = await GetProductsPage(
-                                pageIndex,
+                                pageIndex + 1,
                                 category,
                                 sortFlag
                             );

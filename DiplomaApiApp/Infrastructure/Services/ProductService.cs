@@ -32,12 +32,7 @@ namespace Infrastructure.Services
 
         public List<ProductModel> GetProductsPage(int pageIndex, int categoryId, bool descSort)
         {
-            var products = _unitOfWork.ProductRepository.GetProductsPage(pageIndex);
-
-            if (categoryId != -1)
-            {
-                products = products.Where(p => p.CategoryId == categoryId);
-            }
+            var products = _unitOfWork.ProductRepository.GetProductsPage(pageIndex, categoryId);
 
             if (descSort == true)
             {

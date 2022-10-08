@@ -15,7 +15,7 @@ namespace Infrastructure.DbContexts
 
         public SQLContext()
         {
-            string? connectionString = "Data Source= DESKTOP-TEIV913;Initial Catalog=DiplomaDb;Integrated Security=True";
+            string? connectionString = "Data Source= DESKTOP-TEIV913;Initial Catalog=DiplomaDb;MultipleActiveResultSets = true;Integrated Security=True";
             if (connectionString == null)
             {
                 throw new ArgumentNullException("Environment variable is not exist");

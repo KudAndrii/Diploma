@@ -1,11 +1,11 @@
 type Product = {
     productId: number;
     name: string;
-    img: string | null;
+    img: string;
     categoryId: number;
     price: number;
-    os: string | null;
-    description: string | null;
+    os: string;
+    processor: string;
 };
 
 export default Product;
