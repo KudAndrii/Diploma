@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { Button } from "react-bootstrap";
 import GetProductById from "../Requests/GetProductById";
 import ProductType from "../Types/ProductType";
+import AddProductToCart from "../Requests/AddProductToCart";
 
 const ProductPageComponent: FC = (): JSX.Element => {
     const { id } = useParams();
@@ -35,8 +36,10 @@ const ProductPageComponent: FC = (): JSX.Element => {
                     <p>{product?.os}</p>
                     <p>{product?.processor}</p>
                     <Button
-                        className="btn marginRightButton"
-                        onClick={() => {}}
+                        className="btn"
+                        onClick={() => {
+                            AddProductToCart(1, product?.productId as number);
+                        }}
                     >
                         Add to cart
                     </Button>

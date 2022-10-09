@@ -126,3 +126,7 @@ h1 header {
     text-align: center;
     margin-top: 3rem;
 }
+
+.marginTop {
+    margin-top: 10px;
+}
