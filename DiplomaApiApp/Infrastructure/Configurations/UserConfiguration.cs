@@ -20,13 +20,14 @@ namespace Infrastructure.Configurations
                 .HasMaxLength(50);
 
             builder.Property(p => p.Password)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(50);
 
             builder.HasData(new UserModel()
             {
                 UserId = 1,
                 Login = "user",
-                Password = "1234".GetHashCode(),
+                Password = "03-AC-67-42-16-F3-E1-5C-76-1E-E1-A5-E2-55-F0-67-95-36-23-C8-B3-88-B4-45-9E-13-F9-78-D7-C8-46-F4",
             });
         }
     }

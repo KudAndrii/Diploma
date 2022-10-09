@@ -32,10 +32,10 @@ namespace DiplomaApiApp.Controllers
             {
                 _cartService.AddProductToCart(model.UserId, model.ProductId);
 
-                return Ok(true);
+                return Ok(new { message = true });
             }
 
-            return BadRequest(false);
+            return BadRequest(new { message = false });
         }
 
         [HttpDelete("RemoveProduct")]
@@ -47,10 +47,10 @@ namespace DiplomaApiApp.Controllers
             {
                 result = _cartService.RemoveProductFromCart(model.UserId, model.ProductId);
 
-                return Ok(result);
+                return Ok(new { message = result });
             }
 
-            return BadRequest(result);
+            return BadRequest(new { message = result });
         }
     }
 }

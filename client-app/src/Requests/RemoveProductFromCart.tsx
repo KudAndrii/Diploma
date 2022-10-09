@@ -9,7 +9,6 @@ const RemoveProductFromCart = async (
         userId: userId,
         productId: productId,
     };
-    debugger;
     const requestOptions = {
         method: "DELETE",
         headers: {

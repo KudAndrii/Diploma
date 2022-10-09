@@ -1,8 +1,9 @@
 import "./ComponentsStyles.css";
 import DK_logo from "../DKlogo.png";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { userService } from "../App";
 import { observer } from "mobx-react-lite";
+import { useEffect, useState } from "react";
 
 const HeaderComponent = observer((): JSX.Element => {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ const HeaderComponent = observer((): JSX.Element => {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/cart">
-                                        {userService.token
+                                        {userService.user
                                             ? "Shopping Cart"
                                             : ""}
                                     </Link>
@@ -43,15 +44,15 @@ const HeaderComponent = observer((): JSX.Element => {
                 <h3
                     className="btn btn-primary"
                     onClick={() => {
-                        if (!userService.token) {
-                            userService.GetToken();
+                        if (!userService.user) {
+                            userService.Login("user", "1234");
                         } else {
-                            userService.token = null;
+                            userService.Logout();
                             navigate("/");
                         }
                     }}
                 >
-                    {userService.token ? "Log out" : "Log in"}
+                    {userService.user ? "Log out" : "Log in"}
                 </h3>
             </div>
         </div>

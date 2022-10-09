@@ -18,6 +18,7 @@ namespace Infrastructure.UnitsOfWork
         private SQLProductRepository? _productRepository;
         private SQLCartRepository? _cartRepository;
         private SQLCategoryRepository? _categoryRepository;
+        private SQLUserRepository? _userRepository;
 
         public SQLUnitOfWork(SQLContext context)
         {
@@ -37,6 +38,9 @@ namespace Infrastructure.UnitsOfWork
 
         public ICategoryRepository CategoryRepository =>
             _categoryRepository == null ? new SQLCategoryRepository(_db) : _categoryRepository;
+
+        public IUserRepository UserRepository =>
+            _userRepository == null ? new SQLUserRepository(_db) : _userRepository;
 
         public void Save()
         {
@@ -58,6 +62,7 @@ namespace Infrastructure.UnitsOfWork
                     _productRepository = null;
                     _cartRepository = null;
                     _categoryRepository = null;
+                    _userRepository = null;
                 }
 
                 _db.Dispose();

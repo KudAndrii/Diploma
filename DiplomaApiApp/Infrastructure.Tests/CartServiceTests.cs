@@ -14,6 +14,7 @@ namespace Infrastructure.Tests
     [TestClass]
     public class CartServiceTests
     {
+        /*
         private ICartService _cartService;
 
         [TestInitialize]
@@ -87,5 +88,7 @@ namespace Infrastructure.Tests
             // Assert
             Assert.AreEqual(expectedResult.Products, actualResult);
         }
+        */
     }
+        
 }
