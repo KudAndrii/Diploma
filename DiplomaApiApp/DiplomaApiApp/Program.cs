@@ -18,6 +18,7 @@ namespace DiplomaApiApp
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddDbContext<SQLContext>(x => x.UseSqlServer("Data Source= DESKTOP-TEIV913;Initial Catalog=DiplomaDb;Integrated Security=True"));
 

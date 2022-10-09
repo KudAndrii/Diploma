@@ -8,7 +8,7 @@ namespace DiplomaApiApp.MapsConfigurations
     {
         public ProductMapperProfile()
         {
-            CreateMap<ProductModel, ProductResponseModel>();
+            CreateMap<ProductModel, ProductResponseModel>().ReverseMap();
         }
     }
 }

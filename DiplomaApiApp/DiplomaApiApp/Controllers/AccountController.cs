@@ -18,7 +18,7 @@ namespace DiplomaApiApp.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] UserRequestModel userModel)
+        public IActionResult Login([FromBody] LoginRequestModel userModel)
         {
             if (ModelState.IsValid)
             {

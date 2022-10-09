@@ -2,7 +2,7 @@
 
 namespace DiplomaApiApp.Models
 {
-    public class UserRequestModel
+    public class LoginRequestModel
     {
         [Required]
         public string? Login { get; set; }

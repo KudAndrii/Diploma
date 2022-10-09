@@ -34,6 +34,7 @@ namespace Infrastructure.DbContexts
         public virtual DbSet<CategoryModel> Categories { get; set; } = null!;
         public virtual DbSet<CartModel> Carts { get; set; } = null!;
         public virtual DbSet<ProductCartModel> ProductCarts { get; set; } = null!;
+        public virtual DbSet<OrderModel> Orders { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -50,6 +51,7 @@ namespace Infrastructure.DbContexts
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new CartConfiguration());
             modelBuilder.ApplyConfiguration(new ProductCartConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
 
             modelBuilder.Entity<UserModel>()
                 .HasOne(u => u.Cart)

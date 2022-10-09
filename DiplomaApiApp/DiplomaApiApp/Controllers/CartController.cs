@@ -1,4 +1,5 @@
-﻿using DiplomaApiApp.Models;
+﻿using AutoMapper;
+using DiplomaApiApp.Models;
 using Infrastructure.Interfaces.Services;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,17 +13,26 @@ namespace DiplomaApiApp.Controllers
     {
         private readonly ILogger<CartController> _logger;
         private readonly ICartService _cartService;
+        private readonly IMapper _mapper;
 
-        public CartController(ILogger<CartController> logger, ICartService cartService)
+        public CartController(ILogger<CartController> logger, ICartService cartService, IMapper mapper)
         {
             _logger = logger;
             _cartService = cartService;
+            _mapper = mapper;
         }
 
         [HttpGet("{userId}")]
-        public IEnumerable<ProductModel> Get(int userId)
+        public IEnumerable<ProductResponseModel> Get(int userId)
         {
-            return _cartService.GetCartByUserId(userId);
+            var cart = _cartService.GetCartByUserId(userId);
+            var result = new List<ProductResponseModel>(cart.Count);
+            foreach (var product in cart)
+            {
+                result.Add(_mapper.Map<ProductModel, ProductResponseModel>(product));
+            }
+
+            return result;
         }
 
         [HttpPut("AddProduct")]

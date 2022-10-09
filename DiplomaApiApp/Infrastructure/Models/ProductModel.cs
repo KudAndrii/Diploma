@@ -13,6 +13,7 @@ namespace Infrastructure.Models
         public ProductModel()
         {
             ProductCarts = new List<ProductCartModel>();
+            Orders = new List<OrderModel>();
         }
 
         public int ProductId { get; set; }
@@ -21,6 +22,7 @@ namespace Infrastructure.Models
         public int CategoryId { get; set; }
         public CategoryModel? Category { get; set; }
         public List<ProductCartModel>? ProductCarts { get; set; }
+        public List<OrderModel>? Orders { get; set; }
         public double Price { get; set; }
         public string? OS { get; set; }
 

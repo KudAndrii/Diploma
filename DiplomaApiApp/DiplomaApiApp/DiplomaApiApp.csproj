@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
 	<CodeAnalysisRuleSet>settings.ruleset</CodeAnalysisRuleSet>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <NoWarn>SA1011</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
