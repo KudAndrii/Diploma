@@ -18,34 +18,40 @@ namespace Infrastructure.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void AddProductToCart(int cartId, int productId)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<ProductModel> GetCartByUserId(int userId)
         {
-            throw new NotImplementedException();
+            int cartId = _unitOfWork.CartRepository.GetCartIdByUserId(userId);
+
+            if (cartId != -1)
+            {
+                return _unitOfWork.CartRepository.GetCartById(cartId);
+            }
+            else
+            {
+                return new List<ProductModel>();
+            }
         }
 
-        public List<ProductModel> GetProductsFromCartByUserId(int userId)
+        public void AddProductToCart(int cartId, int productId)
         {
-            /*
-            var result = _unitOfWork.CartRepository.GetCartByUserId(userId);
-
-            if (result == null)
+            var entity = new ProductCartModel()
             {
-                throw new ArgumentNullException("Cart nor found.");
-            }
+                CartId = cartId,
+                ProductId = productId
+            };
 
-            return new List<ProductModel>();
-            */
-            throw new Exception();
+            _unitOfWork.CartRepository.AddProductToCart(entity);
+
+            _unitOfWork.Save();
         }
 
         public bool RemoveProductFromCart(int cartId, int productId)
         {
-            throw new NotImplementedException();
+            var result = _unitOfWork.CartRepository.RemoveProductFromCart(cartId, productId);
+
+            _unitOfWork.Save();
+
+            return result;
         }
     }
 }

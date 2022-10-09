@@ -1,6 +1,8 @@
-﻿using Infrastructure.Interfaces.Services;
+﻿using DiplomaApiApp.Models;
+using Infrastructure.Interfaces.Services;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DiplomaApiApp.Controllers
 {
@@ -20,22 +22,35 @@ namespace DiplomaApiApp.Controllers
         [HttpGet("{userId}")]
         public IEnumerable<ProductModel> Get(int userId)
         {
-            /*
-            return _cartService.GetProductsFromCartByUserId(userId);
-            */
-            throw new Exception();
+            return _cartService.GetCartByUserId(userId);
         }
 
-        [HttpPut("{userId}")]
-        public IActionResult AddProduct([FromRoute] int userId, [FromBody] int productId)
+        [HttpPut("AddProduct")]
+        public IActionResult AddProduct([FromBody] CartRequestModel model)
         {
-            return BadRequest();
+            if (ModelState.IsValid)
+            {
+                _cartService.AddProductToCart(model.UserId, model.ProductId);
+
+                return Ok(true);
+            }
+
+            return BadRequest(false);
         }
 
-        [HttpDelete("{userId}")]
-        public IActionResult DeleteProduct([FromRoute] int userId, [FromBody] int productId)
+        [HttpDelete("RemoveProduct")]
+        public IActionResult RemoveProduct([FromBody] CartRequestModel model)
         {
-            return BadRequest();
+            var result = false;
+
+            if (ModelState.IsValid)
+            {
+                result = _cartService.RemoveProductFromCart(model.UserId, model.ProductId);
+
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
     }
 }

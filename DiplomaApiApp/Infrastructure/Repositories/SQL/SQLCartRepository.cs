@@ -19,6 +19,19 @@ namespace Infrastructure.Repositories.SQL
             _db = db;
         }
 
+        public int GetCartIdByUserId(int userId)
+        {
+            int result = -1;
+            var cart = _db.Carts.FirstOrDefault(c => c.UserId == userId);
+
+            if (cart != null)
+            {
+                result = cart.CartId;
+            }
+
+            return result;
+        }
+
         public List<ProductModel> GetCartById(int cartId)
         {
             List<ProductModel> result = _db.ProductCarts.Include(x => x.Product).Where(x => x.CartId == cartId).Select(x => x.Product).ToList() !;
@@ -26,15 +39,9 @@ namespace Infrastructure.Repositories.SQL
             return result;
         }
 
-        public void AddProductToCart(int cartId, int productId)
+        public void AddProductToCart(ProductCartModel model)
         {
-            var entity = new ProductCartModel()
-            {
-                CartId = cartId,
-                ProductId = productId
-            };
-
-            _db.ProductCarts.Add(entity);
+            _db.ProductCarts.Add(model);
         }
 
         public bool RemoveProductFromCart(int cartId, int productId)
