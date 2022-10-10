@@ -4,7 +4,7 @@ import LoginRequest from "../Requests/LoginRequest";
 
 export class UserService {
     user: UserType | null = null;
-
+    modalFlag: boolean = false;
     constructor() {
         makeAutoObservable(this);
     }

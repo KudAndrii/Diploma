@@ -23,7 +23,6 @@ function App() {
                     path="/orderHistory"
                     element={<OrderHistoryComponent />}
                 />
-                <Route path="/login" element={<LoginComponent />} />
             </Routes>
         </>
     );

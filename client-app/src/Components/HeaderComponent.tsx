@@ -4,9 +4,11 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { userService } from "../App";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
+import LoginComponent from "./LogInComponent";
 
 const HeaderComponent = observer((): JSX.Element => {
     const navigate = useNavigate();
+    const [show, setShow] = useState(false);
 
     return (
         <div className="header">
@@ -46,12 +48,27 @@ const HeaderComponent = observer((): JSX.Element => {
                 <Outlet />
             </div>
             <div className="headerButtons">
-                <h3
+                <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                        debugger;
+                        if (!userService.user) {
+                            setShow(true);
+                        } else {
+                            setShow(false);
+                            userService.Logout();
+                            navigate("/");
+                        }
+                    }}
+                >
+                    {userService.user ? "Log out" : "Log in"}
+                </button>
+                {show && <LoginComponent showFlag={true}></LoginComponent>}
+                {/* <h3
                     className="btn btn-primary"
                     onClick={() => {
                         if (!userService.user) {
-                            // navigate("/login");
-                            userService.Login("user", "1234");
+                            setShow(true);
                         } else {
                             userService.Logout();
                             navigate("/");
@@ -59,7 +76,7 @@ const HeaderComponent = observer((): JSX.Element => {
                     }}
                 >
                     {userService.user ? "Log out" : "Log in"}
-                </h3>
+                </h3> */}
             </div>
         </div>
     );

@@ -3,53 +3,68 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { userService } from "../App";
 
-const LoginComponent = observer((): JSX.Element => {
-    const [show, setShow] = useState(false);
+type childType = {
+    showFlag: boolean;
+};
 
+type formControl = {
+    login: { value: string };
+    password: { value: string };
+};
+
+const LoginComponent = observer((props: childType): JSX.Element => {
+    const [show, setShow] = useState(props.showFlag);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-            </Button>
-
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>
+                        Please enter your login and password!
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlInput1"
-                        >
-                            <Form.Label>Email address</Form.Label>
+                    <Form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+
+                            const target = e.target as typeof e.target &
+                                formControl;
+
+                            const login = target.login.value;
+                            const password = target.password.value;
+
+                            userService.Login(login, password);
+
+                            handleClose();
+                        }}
+                    >
+                        <Form.Group className="mb-3" controlId="login">
+                            <Form.Label>Login</Form.Label>
                             <Form.Control
-                                type="email"
-                                placeholder="name@example.com"
+                                type="text"
+                                placeholder="user"
+                                name="login"
                                 autoFocus
                             />
                         </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
-                            <Form.Label>Example textarea</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                        <Form.Group className="mb-3" controlId="password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                placeholder="1234"
+                                name="password"
+                                autoFocus
+                            />
                         </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Login
+                        </Button>
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </>
     );
