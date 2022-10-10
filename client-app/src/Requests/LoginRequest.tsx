@@ -19,7 +19,7 @@ const LoginRequest = async (
     };
 
     const result: Response = await fetch(
-        `https://localhost:7026/Account/Login`,
+        `https://localhost:7026/accounts/login`,
         requestOptions
     );
     const body = await result.json();

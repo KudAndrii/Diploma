@@ -22,7 +22,7 @@ namespace Infrastructure.Repositories.SQL
         {
             var result = _db.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
 
-            return result == null ? new UserModel() : result;
+            return result == null ? null : result;
         }
     }
 }

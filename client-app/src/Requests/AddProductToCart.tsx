@@ -19,7 +19,7 @@ const AddProductToCart = async (
     };
 
     const result: Response = await fetch(
-        `https://localhost:7026/Cart/AddProduct`,
+        `https://localhost:7026/carts/product`,
         requestOptions
     );
 

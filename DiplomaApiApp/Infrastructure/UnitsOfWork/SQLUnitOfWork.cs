@@ -15,11 +15,11 @@ namespace Infrastructure.UnitsOfWork
         private bool _disposed = false;
 
         private SQLContext _db;
-        private SQLProductRepository? _productRepository;
-        private SQLCartRepository? _cartRepository;
-        private SQLCategoryRepository? _categoryRepository;
-        private SQLUserRepository? _userRepository;
-        private SQLOrderRepository? _orderRepository;
+        private SQLProductRepository _productRepository;
+        private SQLCartRepository _cartRepository;
+        private SQLCategoryRepository _categoryRepository;
+        private SQLUserRepository _userRepository;
+        private SQLOrderRepository _orderRepository;
 
         public SQLUnitOfWork(SQLContext context)
         {

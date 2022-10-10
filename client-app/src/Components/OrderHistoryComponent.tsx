@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import RemoveProductFromCart from "../Requests/RemoveProductFromCart";
 import OrderType from "../Types/OrderType";
 import GetOrderHistoryByUserId from "../Requests/GetOrderHistoryByUserId";
+import OrderLineComponent from "./OrderLineComponent";
 
 const OrderHistoryComponent = (): JSX.Element => {
     const emptyMessage = "It is empty now :(";
@@ -41,21 +42,9 @@ const OrderHistoryComponent = (): JSX.Element => {
                     <tbody>
                         {orderHistory.map((x, index) => (
                             <div key={index}>
-                                <OrderLine productType={x}></OrderLine>
-                                <Button
-                                    className="btn marginTop"
-                                    onClick={async () => {
-                                        await RemoveProductFromCart(
-                                            1,
-                                            x?.productId as number
-                                        );
-
-                                        const cart = await GetCartByUserId(1);
-                                        setShoppingCart(cart);
-                                    }}
-                                >
-                                    Remove from cart
-                                </Button>
+                                <OrderLineComponent
+                                    orderType={x}
+                                ></OrderLineComponent>
                             </div>
                         ))}
                     </tbody>

@@ -5,6 +5,8 @@ import CatalogComponent from "./Components/CatalogComponent";
 import ProductPageComponent from "./Components/ProductPageComponent";
 import CartComponent from "./Components/CartComponent";
 import { UserService } from "./Services/UserService";
+import OrderHistoryComponent from "./Components/OrderHistoryComponent";
+import LoginComponent from "./Components/LogInComponent";
 
 export const userService = new UserService();
 
@@ -17,6 +19,11 @@ function App() {
                 <Route path="catalog" element={<CatalogComponent />} />
                 <Route path="catalog/:id" element={<ProductPageComponent />} />
                 <Route path="cart" element={<CartComponent />} />
+                <Route
+                    path="/orderHistory"
+                    element={<OrderHistoryComponent />}
+                />
+                <Route path="/login" element={<LoginComponent />} />
             </Routes>
         </>
     );

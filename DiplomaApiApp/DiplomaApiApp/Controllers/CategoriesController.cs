@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DiplomaApiApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("categories")]
     public class CategoriesController : Controller
     {
         private readonly ILogger<CategoriesController> _logger;

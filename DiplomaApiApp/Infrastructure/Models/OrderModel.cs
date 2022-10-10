@@ -12,7 +12,7 @@ namespace Infrastructure.Models
         public int ProductId { get; set; }
         public int UserId { get; set; }
         public DateTime OrderDate { get; set; }
-        public ProductModel? Product { get; set; }
-        public UserModel? User { get; set; }
+        public ProductModel Product { get; set; }
+        public UserModel User { get; set; }
     }
 }

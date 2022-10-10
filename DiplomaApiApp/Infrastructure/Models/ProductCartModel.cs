@@ -13,7 +13,7 @@ namespace Infrastructure.Models
         public int ProductCartId { get; set; }
         public int ProductId { get; set; }
         public int CartId { get; set; }
-        public ProductModel? Product { get; set; }
-        public CartModel? Cart { get; set; }
+        public ProductModel Product { get; set; }
+        public CartModel Cart { get; set; }
     }
 }

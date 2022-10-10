@@ -50,6 +50,7 @@ const HeaderComponent = observer((): JSX.Element => {
                     className="btn btn-primary"
                     onClick={() => {
                         if (!userService.user) {
+                            // navigate("/login");
                             userService.Login("user", "1234");
                         } else {
                             userService.Logout();

@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace DiplomaApiApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class CartController : Controller
+    [Route("carts")]
+    public class CartsController : Controller
     {
-        private readonly ILogger<CartController> _logger;
+        private readonly ILogger<CartsController> _logger;
         private readonly ICartService _cartService;
         private readonly IMapper _mapper;
 
-        public CartController(ILogger<CartController> logger, ICartService cartService, IMapper mapper)
+        public CartsController(ILogger<CartsController> logger, ICartService cartService, IMapper mapper)
         {
             _logger = logger;
             _cartService = cartService;
@@ -35,7 +35,7 @@ namespace DiplomaApiApp.Controllers
             return result;
         }
 
-        [HttpPut("AddProduct")]
+        [HttpPut("product")]
         public IActionResult AddProduct([FromBody] CartRequestModel model)
         {
             if (ModelState.IsValid)
@@ -48,7 +48,7 @@ namespace DiplomaApiApp.Controllers
             return BadRequest(new { message = false });
         }
 
-        [HttpDelete("RemoveProduct")]
+        [HttpDelete("product")]
         public IActionResult RemoveProduct([FromBody] CartRequestModel model)
         {
             var result = false;

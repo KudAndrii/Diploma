@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace DiplomaApiApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class OrderController : Controller
+    [Route("orders")]
+    public class OrdersController : Controller
     {
-        private readonly ILogger<OrderController> _logger;
+        private readonly ILogger<OrdersController> _logger;
         private readonly IMapper _mapper;
         private readonly IOrderService _orderService;
 
-        public OrderController(ILogger<OrderController> logger, IMapper mappre, IOrderService orderService)
+        public OrdersController(ILogger<OrdersController> logger, IMapper mappre, IOrderService orderService)
         {
             _logger = logger;
             _mapper = mappre;
@@ -38,7 +38,7 @@ namespace DiplomaApiApp.Controllers
             return result;
         }
 
-        [HttpPost("Create")]
+        [HttpPost]
         public IActionResult Order([FromBody] OrderRequestModel order)
         {
             if (ModelState.IsValid)

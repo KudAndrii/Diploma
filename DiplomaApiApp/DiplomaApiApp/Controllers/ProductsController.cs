@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DiplomaApiApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("products")]
     public class ProductsController : Controller
     {
         private readonly ILogger<ProductsController> _logger;
@@ -30,7 +30,7 @@ namespace DiplomaApiApp.Controllers
             return result;
         }
 
-        [HttpPost("ProductsPage")]
+        [HttpPost("page")]
         public IEnumerable<ProductResponseModel> GetProducts([FromBody] PageRequestModel pageModel)
         {
             if (ModelState.IsValid)

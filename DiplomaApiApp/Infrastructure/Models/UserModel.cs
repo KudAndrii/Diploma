@@ -16,9 +16,9 @@ namespace Infrastructure.Models
         }
 
         public int UserId { get; set; }
-        public string? Login { get; set; }
-        public string? Password { get; set; }
-        public CartModel? Cart { get; set; }
-        public List<OrderModel>? Orders { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public CartModel Cart { get; set; }
+        public List<OrderModel> Orders { get; set; }
     }
 }

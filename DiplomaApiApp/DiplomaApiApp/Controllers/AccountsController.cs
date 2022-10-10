@@ -5,26 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 namespace DiplomaApiApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class AccountController : Controller
+    [Route("accounts")]
+    public class AccountsController : Controller
     {
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<AccountsController> _logger;
         private readonly IUserService _userService;
 
-        public AccountController(ILogger<AccountController> logger, IUserService userService)
+        public AccountsController(ILogger<AccountsController> logger, IUserService userService)
         {
             _logger = logger;
             _userService = userService;
         }
 
-        [HttpPost("Login")]
+        [HttpPost("login")]
         public IActionResult Login([FromBody] LoginRequestModel userModel)
         {
             if (ModelState.IsValid)
             {
                 var user = _userService.GetUser(userModel.Login!, userModel.Password!);
 
-                if (user.Login == null)
+                if (user == null)
                 {
                     return BadRequest(new { message = "Login or password is incorrect" });
                 }

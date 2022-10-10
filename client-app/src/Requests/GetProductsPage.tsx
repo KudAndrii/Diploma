@@ -21,7 +21,7 @@ const GetProductsPage = async (
     };
 
     const result: Response = await fetch(
-        `https://localhost:7026/Products/ProductsPage`,
+        `https://localhost:7026/products/page`,
         requestOptions
     );
     const body = await result.json();

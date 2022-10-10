@@ -18,7 +18,7 @@ namespace Infrastructure.Models
 
         public int CartId { get; set; }
         public int UserId { get; set; }
-        public UserModel? User { get; set; }
-        public List<ProductCartModel>? ProductCarts { get; set; }
+        public UserModel User { get; set; }
+        public List<ProductCartModel> ProductCarts { get; set; }
     }
 }

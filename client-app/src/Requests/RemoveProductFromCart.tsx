@@ -18,7 +18,7 @@ const RemoveProductFromCart = async (
     };
 
     const result: Response = await fetch(
-        `https://localhost:7026/Cart/RemoveProduct`,
+        `https://localhost:7026/carts/product`,
         requestOptions
     );
 

@@ -11,6 +11,8 @@ const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
         <>
             <div className="card">
                 <img
+                    width={300}
+                    height={350}
                     src={props.productType.img}
                     className="card-img-top productImg"
                     alt={props.productType.name}

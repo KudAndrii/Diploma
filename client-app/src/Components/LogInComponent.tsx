@@ -1,42 +1,58 @@
-import "./ComponentsStyles.css";
-import DK_logo from "../DKlogo.png";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { userService } from "../App";
 import { observer } from "mobx-react-lite";
-/*
-const HeaderComponent = observer((): JSX.Element => {
-    const navigate = useNavigate();
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+
+const LoginComponent = observer((): JSX.Element => {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <>
-<div className="form-signin w-100 m-auto">
-  <form>
-    <img className="mb-4" src="./Signin Template · Bootstrap v5.2_files/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+            <Button variant="primary" onClick={handleShow}>
+                Launch demo modal
+            </Button>
 
-    <div className="form-floating">
-      <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div className="form-floating">
-      <input type="password" className="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
-
-    <div className="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p className="mt-5 mb-3 text-muted">© 2017–2022</p>
-  </form>
-</main>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlInput1"
+                        >
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder="name@example.com"
+                                autoFocus
+                            />
+                        </Form.Group>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="exampleForm.ControlTextarea1"
+                        >
+                            <Form.Label>Example textarea</Form.Label>
+                            <Form.Control as="textarea" rows={3} />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 });
 
-export default HeaderComponent;
-
-
-*/
+export default LoginComponent;
