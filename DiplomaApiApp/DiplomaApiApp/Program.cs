@@ -1,3 +1,4 @@
+using DiplomaApiApp.Services;
 using Infrastructure.DbContexts;
 using Infrastructure.Interfaces;
 using Infrastructure.Interfaces.Services;
@@ -22,6 +23,19 @@ namespace DiplomaApiApp
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddDbContext<SQLContext>(x => x.UseSqlServer("Data Source= DESKTOP-TEIV913;Initial Catalog=DiplomaDb;Integrated Security=True"));
 
+            // configure token request parameters
+            builder.Services.Configure<IdentityServerSettings>(builder.Configuration.GetSection("IdentityServerSettings"));
+            builder.Services.AddSingleton<TokenService>();
+
+            // configure identityServerAuthentication
+            builder.Services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication("Bearer", options =>
+                {
+                    options.ApiName = "diplomaapi";
+                    options.Authority = "http://localhost:7184";
+                    options.RequireHttpsMetadata = false;
+                });
+
             builder.Services.AddControllers();
 
             var app = builder.Build();
@@ -35,6 +49,7 @@ namespace DiplomaApiApp
                 policy.AllowAnyMethod();
             });
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

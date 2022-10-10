@@ -2,6 +2,7 @@
 using DiplomaApiApp.Models;
 using Infrastructure.Interfaces.Services;
 using Infrastructure.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -9,6 +10,7 @@ namespace DiplomaApiApp.Controllers
 {
     [ApiController]
     [Route("carts")]
+    [Authorize]
     public class CartsController : Controller
     {
         private readonly ILogger<CartsController> _logger;

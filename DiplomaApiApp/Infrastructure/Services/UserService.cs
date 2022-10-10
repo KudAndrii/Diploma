@@ -24,7 +24,6 @@ namespace Infrastructure.Services
             var hashPassword = GetHashPassword(password);
             var result = _unitOfWork.UserRepository.GetUser(login, hashPassword);
 
-            // token request
             return result;
         }
 

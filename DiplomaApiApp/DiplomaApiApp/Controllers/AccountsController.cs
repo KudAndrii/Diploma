@@ -1,4 +1,5 @@
 ﻿using DiplomaApiApp.Models;
+using DiplomaApiApp.Services;
 using Infrastructure.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,15 +11,17 @@ namespace DiplomaApiApp.Controllers
     {
         private readonly ILogger<AccountsController> _logger;
         private readonly IUserService _userService;
+        private readonly TokenService _tokenService;
 
-        public AccountsController(ILogger<AccountsController> logger, IUserService userService)
+        public AccountsController(ILogger<AccountsController> logger, IUserService userService, TokenService tokenService)
         {
             _logger = logger;
             _userService = userService;
+            _tokenService = tokenService;
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequestModel userModel)
+        public async Task<IActionResult> Login([FromBody] LoginRequestModel userModel)
         {
             if (ModelState.IsValid)
             {
@@ -30,8 +33,8 @@ namespace DiplomaApiApp.Controllers
                 }
                 else
                 {
-                    // generating of jwt token
-                    return Ok(new { userId = user.UserId, token = "123" });
+                    var tokenResponse = await _tokenService.GetToken("diplomaapi.read");
+                    return Ok(new { userId = user.UserId, token = tokenResponse.AccessToken });
                 }
             }
 

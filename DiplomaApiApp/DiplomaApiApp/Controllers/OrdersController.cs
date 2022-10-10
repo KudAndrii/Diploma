@@ -2,12 +2,14 @@
 using DiplomaApiApp.Models;
 using Infrastructure.Interfaces.Services;
 using Infrastructure.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaApiApp.Controllers
 {
     [ApiController]
     [Route("orders")]
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly ILogger<OrdersController> _logger;
