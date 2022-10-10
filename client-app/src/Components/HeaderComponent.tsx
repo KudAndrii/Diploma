@@ -8,7 +8,7 @@ import LoginComponent from "./LogInComponent";
 
 const HeaderComponent = observer((): JSX.Element => {
     const navigate = useNavigate();
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
 
     return (
         <div className="header">
@@ -53,9 +53,9 @@ const HeaderComponent = observer((): JSX.Element => {
                     onClick={() => {
                         debugger;
                         if (!userService.user) {
-                            setShow(true);
+                            userService.modalFlag = true;
                         } else {
-                            setShow(false);
+                            userService.modalFlag = false;
                             userService.Logout();
                             navigate("/");
                         }
@@ -63,7 +63,7 @@ const HeaderComponent = observer((): JSX.Element => {
                 >
                     {userService.user ? "Log out" : "Log in"}
                 </button>
-                {show && <LoginComponent showFlag={true}></LoginComponent>}
+                {userService.modalFlag && <LoginComponent></LoginComponent>}
                 {/* <h3
                     className="btn btn-primary"
                     onClick={() => {

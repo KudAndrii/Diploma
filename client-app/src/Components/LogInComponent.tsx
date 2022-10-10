@@ -5,22 +5,16 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { userService } from "../App";
 
-type childType = {
-    showFlag: boolean;
-};
-
 type formControl = {
     login: { value: string };
     password: { value: string };
 };
 
-const LoginComponent = observer((props: childType): JSX.Element => {
-    const [show, setShow] = useState(props.showFlag);
-    const handleClose = () => setShow(false);
-
+const LoginComponent = observer((): JSX.Element => {
+    const handleClose = () => (userService.modalFlag = false);
     return (
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={userService.modalFlag} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>
                         Please enter your login and password!
