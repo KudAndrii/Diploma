@@ -43,8 +43,7 @@ namespace DiplomaApiApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var productIds = order.Products?.Select(p => p.ProductId).ToList();
-                var result = _orderService.CreateOrder(order.UserId, productIds!);
+                var result = _orderService.CreateOrder(order.UserId, order.ProductIds!);
 
                 if (result == true)
                 {

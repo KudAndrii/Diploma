@@ -13,6 +13,7 @@ function App() {
         <>
             <HeaderComponent></HeaderComponent>
             <Routes>
+                <Route path="/" element={<CatalogComponent />} />
                 <Route path="catalog" element={<CatalogComponent />} />
                 <Route path="catalog/:id" element={<ProductPageComponent />} />
                 <Route path="cart" element={<CartComponent />} />

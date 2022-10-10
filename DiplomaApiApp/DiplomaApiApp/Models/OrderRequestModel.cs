@@ -8,6 +8,6 @@ namespace DiplomaApiApp.Models
         [Required]
         public int UserId { get; set; }
         [Required]
-        public List<ProductModel>? Products { get; set; }
+        public List<int>? ProductIds { get; set; }
     }
 }

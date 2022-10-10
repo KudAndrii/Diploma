@@ -18,11 +18,6 @@ const HeaderComponent = observer((): JSX.Element => {
                         <div className="collapse navbar-collapse" id="">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">
-                                        Home
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
                                     <Link className="nav-link" to="/catalog">
                                         Catalog
                                     </Link>
@@ -31,6 +26,16 @@ const HeaderComponent = observer((): JSX.Element => {
                                     <Link className="nav-link" to="/cart">
                                         {userService.user
                                             ? "Shopping Cart"
+                                            : ""}
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link
+                                        className="nav-link"
+                                        to="/orderHistory"
+                                    >
+                                        {userService.user
+                                            ? "Order History"
                                             : ""}
                                     </Link>
                                 </li>
