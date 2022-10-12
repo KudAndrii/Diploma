@@ -1,4 +1,5 @@
 import { apiConfig } from "../apiConfig";
+import { userService } from "../App";
 import ProductType from "../Types/ProductType";
 
 const AddProductToCart = async (
@@ -14,6 +15,7 @@ const AddProductToCart = async (
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + userService.user?.token,
         },
         body: JSON.stringify(requestBody),
     };

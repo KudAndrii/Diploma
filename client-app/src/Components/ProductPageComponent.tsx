@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import GetProductById from "../Requests/GetProductById";
 import ProductType from "../Types/ProductType";
 import AddProductToCart from "../Requests/AddProductToCart";
+import { userService } from "../App";
 
 const ProductPageComponent: FC = (): JSX.Element => {
     const { id } = useParams();
@@ -35,14 +36,19 @@ const ProductPageComponent: FC = (): JSX.Element => {
                     <h5 className="card-text">{product?.price + " ₴"}</h5>
                     <p>{product?.os}</p>
                     <p>{product?.processor}</p>
-                    <Button
-                        className="btn"
-                        onClick={() => {
-                            AddProductToCart(1, product?.productId as number);
-                        }}
-                    >
-                        Add to cart
-                    </Button>
+                    {userService.user && (
+                        <Button
+                            className="btn"
+                            onClick={() => {
+                                AddProductToCart(
+                                    1,
+                                    product?.productId as number
+                                );
+                            }}
+                        >
+                            Add to cart
+                        </Button>
+                    )}
                 </div>
             </div>
         </>

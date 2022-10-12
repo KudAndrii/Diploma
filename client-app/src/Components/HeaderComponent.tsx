@@ -51,7 +51,6 @@ const HeaderComponent = observer((): JSX.Element => {
                 <button
                     className="btn btn-primary"
                     onClick={() => {
-                        debugger;
                         if (!userService.user) {
                             userService.modalFlag = true;
                         } else {
@@ -64,19 +63,6 @@ const HeaderComponent = observer((): JSX.Element => {
                     {userService.user ? "Log out" : "Log in"}
                 </button>
                 {userService.modalFlag && <LoginComponent></LoginComponent>}
-                {/* <h3
-                    className="btn btn-primary"
-                    onClick={() => {
-                        if (!userService.user) {
-                            setShow(true);
-                        } else {
-                            userService.Logout();
-                            navigate("/");
-                        }
-                    }}
-                >
-                    {userService.user ? "Log out" : "Log in"}
-                </h3> */}
             </div>
         </div>
     );

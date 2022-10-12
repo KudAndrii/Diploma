@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import GetCartByUserId from "../Requests/GetCartByUserId";
 import { Button } from "react-bootstrap";
 import RemoveProductFromCart from "../Requests/RemoveProductFromCart";
+import { userService } from "../App";
 
 const CartComponent = (): JSX.Element => {
     const emptyMessage = "It is empty now :(";
@@ -11,7 +12,7 @@ const CartComponent = (): JSX.Element => {
 
     useEffect(() => {
         const firstTime = async () => {
-            const cart = await GetCartByUserId(1);
+            const cart = await GetCartByUserId(userService.user?.userId!);
             setShoppingCart(cart);
         };
 
@@ -42,7 +43,9 @@ const CartComponent = (): JSX.Element => {
                                             x?.productId as number
                                         );
 
-                                        const cart = await GetCartByUserId(1);
+                                        const cart = await GetCartByUserId(
+                                            userService.user?.userId!
+                                        );
                                         setShoppingCart(cart);
                                     }}
                                 >
