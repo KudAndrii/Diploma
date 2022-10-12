@@ -6,6 +6,7 @@ import GetProductById from "../Requests/GetProductById";
 import ProductType from "../Types/ProductType";
 import AddProductToCart from "../Requests/AddProductToCart";
 import { userService } from "../App";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 const ProductPageComponent: FC = (): JSX.Element => {
     const { id } = useParams();
