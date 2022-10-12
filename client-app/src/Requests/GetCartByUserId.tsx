@@ -3,11 +3,9 @@ import { userService } from "../App";
 import ProductType from "../Types/ProductType";
 
 const GetCartByUserId = async (id: number): Promise<ProductType[]> => {
-    debugger;
     const requestOptions = {
-        method: "GET",
         headers: {
-            Authorization: "Bearer " + userService.user?.token,
+            Authorization: `Bearer ${userService.user?.token}`,
         },
     };
 

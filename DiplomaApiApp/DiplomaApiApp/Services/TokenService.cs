@@ -20,6 +20,12 @@ namespace DiplomaApiApp.Services
             }
         }
 
+        /// <summary>
+        /// Method generates access token by given scope.
+        /// </summary>
+        /// <param name="scope">Given scope.</param>
+        /// <returns>Access token.</returns>
+        /// <exception cref="Exception">Current client can't get token from IdentityServer.</exception>
         public async Task<TokenResponse> GetToken(string scope)
         {
             using var client = new HttpClient();

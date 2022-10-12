@@ -9,18 +9,16 @@ type childType = {
 const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
     return (
         <>
-            <div className="card">
-                <img
-                    width={300}
-                    height={350}
-                    src={props.productType.img}
-                    className="card-img-top productImg"
-                    alt={props.productType.name}
-                />
-                <div className="card-body">
-                    <p className="card-text">{props.productType.name}</p>
-                    <p>{props.productType.price + " ₴"}</p>
-                </div>
+            <img
+                width={300}
+                height={350}
+                src={props.productType.img}
+                className="card-img-top productCardImage"
+                alt={props.productType.name}
+            />
+            <div className="card-body">
+                <p className="card-text">{props.productType.name}</p>
+                <p>{props.productType.price + " ₴"}</p>
             </div>
         </>
     );

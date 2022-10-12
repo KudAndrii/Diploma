@@ -1,4 +1,5 @@
 import { apiConfig } from "../apiConfig";
+import { userService } from "../App";
 import ProductType from "../Types/ProductType";
 
 const RemoveProductFromCart = async (
@@ -13,6 +14,7 @@ const RemoveProductFromCart = async (
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${userService.user?.token}`,
         },
         body: JSON.stringify(requestBody),
     };

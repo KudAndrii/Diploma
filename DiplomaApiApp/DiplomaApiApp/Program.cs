@@ -14,6 +14,7 @@ namespace DiplomaApiApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // DI
             builder.Services.AddScoped<IUnitOfWork, SQLUnitOfWork>();
             builder.Services.AddScoped<ICartService, CartService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -32,7 +33,7 @@ namespace DiplomaApiApp
                 .AddIdentityServerAuthentication("Bearer", options =>
                 {
                     options.ApiName = "diplomaapi";
-                    options.Authority = "http://localhost:7184";
+                    options.Authority = "https://localhost:7184";
                     options.RequireHttpsMetadata = false;
                 });
 
@@ -42,6 +43,7 @@ namespace DiplomaApiApp
 
             app.UseHttpsRedirection();
 
+            // disable cors policy for production goals
             app.UseCors(policy =>
             {
                 policy.AllowAnyOrigin();

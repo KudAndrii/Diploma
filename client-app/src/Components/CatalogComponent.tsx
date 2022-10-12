@@ -43,10 +43,33 @@ const CatapogComponent = observer((): JSX.Element => {
         <>
             <div className="catalogGeneral">
                 <div className="tools">
+                    <h4
+                        className={
+                            category === -1
+                                ? "category btn btn-dark "
+                                : "category btn btn-outline-dark"
+                        }
+                        onClick={async () => {
+                            setCategory(-1);
+                            setPageIndex(1);
+                            const products = await GetProductsPage(
+                                1,
+                                -1,
+                                sortFlag
+                            );
+                            setProductList(products);
+                        }}
+                    >
+                        All categories
+                    </h4>
                     {categories &&
                         categories.map((x, index) => (
                             <h4
-                                className="category btn btn-outline-dark"
+                                className={
+                                    x.categoryId === category
+                                        ? "category btn btn-dark "
+                                        : "category btn btn-outline-dark"
+                                }
                                 key={index}
                                 onClick={async () => {
                                     // products by category request
@@ -98,16 +121,18 @@ const CatapogComponent = observer((): JSX.Element => {
                         <div className="row mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
                             {productList &&
                                 productList.map((x, index) => (
-                                    <Link
-                                        className="nav-link"
-                                        to={"/catalog/" + x.productId}
-                                    >
-                                        <div key={index}>
-                                            <ProductCardComponent
-                                                productType={x}
-                                            ></ProductCardComponent>
+                                    <div key={index}>
+                                        <div className="card">
+                                            <Link
+                                                className="nav-link"
+                                                to={"/catalog/" + x.productId}
+                                            >
+                                                <ProductCardComponent
+                                                    productType={x}
+                                                ></ProductCardComponent>
+                                            </Link>
                                         </div>
-                                    </Link>
+                                    </div>
                                 ))}
                         </div>
                     </div>

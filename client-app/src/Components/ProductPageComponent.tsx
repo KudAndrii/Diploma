@@ -27,7 +27,7 @@ const ProductPageComponent: FC = (): JSX.Element => {
                 <div className="productGeneral">
                     <img
                         src={product?.img}
-                        className="productImage"
+                        className="productPageImage"
                         alt="product image"
                     />
                     <h3 className="productName">{product?.name}</h3>

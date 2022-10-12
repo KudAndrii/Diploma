@@ -15,7 +15,7 @@ const AddProductToCart = async (
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + userService.user?.token,
+            Authorization: `Bearer ${userService.user?.token}`,
         },
         body: JSON.stringify(requestBody),
     };

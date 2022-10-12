@@ -26,9 +26,7 @@ const HeaderComponent = observer((): JSX.Element => {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/cart">
-                                        {userService.user
-                                            ? "Shopping Cart"
-                                            : ""}
+                                        {userService.user ? "Basket" : ""}
                                     </Link>
                                 </li>
                                 <li className="nav-item">

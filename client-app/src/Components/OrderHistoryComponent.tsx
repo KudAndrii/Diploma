@@ -7,19 +7,44 @@ import RemoveProductFromCart from "../Requests/RemoveProductFromCart";
 import OrderType from "../Types/OrderType";
 import GetOrderHistoryByUserId from "../Requests/GetOrderHistoryByUserId";
 import OrderLineComponent from "./OrderLineComponent";
+import { userService } from "../App";
+import Table from "react-bootstrap/Table";
+import CategoryType from "../Types/CategoryType";
+import GetProductCategories from "../Requests/GetProductCategories";
 
 const OrderHistoryComponent = (): JSX.Element => {
     const emptyMessage = "It is empty now :(";
     const [orderHistory, setOrderHistory] = useState<OrderType[]>([]);
+    const [categories, setCategories] = useState<CategoryType[]>();
 
     useEffect(() => {
         const firstTime = async () => {
-            const cart = await GetOrderHistoryByUserId(1);
+            const categ = await GetProductCategories();
+            setCategories(categ);
+
+            const cart = await GetOrderHistoryByUserId(
+                userService.user?.userId!
+            );
             setOrderHistory(cart);
         };
 
         firstTime();
     }, []);
+
+    const getCategoryImg = (
+        categories: CategoryType[],
+        product: ProductType
+    ): string | null => {
+        let result: string | null = null;
+
+        categories.forEach((category) => {
+            if (category.categoryId === product.categoryId) {
+                result = category.img!;
+            }
+        });
+
+        return result;
+    };
 
     if (orderHistory.length === 0) {
         return (
@@ -30,25 +55,28 @@ const OrderHistoryComponent = (): JSX.Element => {
     } else {
         return (
             <>
-                <table className="table">
+                <Table striped>
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         {orderHistory.map((x, index) => (
-                            <div key={index}>
+                            <tr key={index}>
                                 <OrderLineComponent
                                     orderType={x}
+                                    categoryImg={
+                                        getCategoryImg(categories!, x.product)!
+                                    }
                                 ></OrderLineComponent>
-                            </div>
+                            </tr>
                         ))}
                     </tbody>
-                </table>
+                </Table>
             </>
         );
     }

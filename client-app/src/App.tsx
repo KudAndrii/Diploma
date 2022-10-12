@@ -3,7 +3,7 @@ import HeaderComponent from "./Components/HeaderComponent";
 import { Route, Routes } from "react-router-dom";
 import CatalogComponent from "./Components/CatalogComponent";
 import ProductPageComponent from "./Components/ProductPageComponent";
-import CartComponent from "./Components/CartComponent";
+import CartComponent from "./Components/BasketComponent";
 import { UserService } from "./Services/UserService";
 import OrderHistoryComponent from "./Components/OrderHistoryComponent";
 import LoginComponent from "./Components/LogInComponent";

@@ -5,6 +5,7 @@ import GetCartByUserId from "../Requests/GetCartByUserId";
 import { Button } from "react-bootstrap";
 import RemoveProductFromCart from "../Requests/RemoveProductFromCart";
 import { userService } from "../App";
+import { Link } from "react-router-dom";
 
 const CartComponent = (): JSX.Element => {
     const emptyMessage = "It is empty now :(";
@@ -32,14 +33,21 @@ const CartComponent = (): JSX.Element => {
                     <div className="row mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
                         {shoppingCart.map((x, index) => (
                             <div key={index}>
-                                <ProductCardComponent
-                                    productType={x}
-                                ></ProductCardComponent>
+                                <div className="card">
+                                    <Link
+                                        className="nav-link"
+                                        to={"/catalog/" + x.productId}
+                                    >
+                                        <ProductCardComponent
+                                            productType={x}
+                                        ></ProductCardComponent>
+                                    </Link>
+                                </div>
                                 <Button
                                     className="btn marginTop"
                                     onClick={async () => {
                                         await RemoveProductFromCart(
-                                            1,
+                                            userService.user?.userId!,
                                             x?.productId as number
                                         );
 
