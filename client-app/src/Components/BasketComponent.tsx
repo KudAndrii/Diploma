@@ -19,6 +19,7 @@ import Trash from "../icons/trash.png";
 import "./ComponentsStyles.css";
 import { Link } from "react-router-dom";
 import RemoveProductFromCart from "../Requests/RemoveProductFromCart";
+import CreateOrder from "../Requests/CreateOrderRequest";
 
 const BasketComponent = (): JSX.Element => {
     const emptyMessage = "It is empty now :(";
@@ -40,7 +41,7 @@ const BasketComponent = (): JSX.Element => {
         firstTime();
     }, []);
 
-    if (shoppingCart.length === -1) {
+    if (shoppingCart.length === 0) {
         return (
             <>
                 <h1 className="emptyMessage">{emptyMessage}</h1>
@@ -94,6 +95,7 @@ const BasketComponent = (): JSX.Element => {
                                                 <MDBCol>
                                                     <img
                                                         src={Trash}
+                                                        id="pointer"
                                                         className="sort_icon"
                                                         onClick={async () => {
                                                             await RemoveProductFromCart(
@@ -138,6 +140,34 @@ const BasketComponent = (): JSX.Element => {
                                                 className="ms-3 btn-primary"
                                                 block
                                                 size="lg"
+                                                onClick={async () => {
+                                                    let productIds: number[] =
+                                                        shoppingCart.map(
+                                                            (x) => x.productId
+                                                        );
+
+                                                    const result =
+                                                        await CreateOrder(
+                                                            userService.user
+                                                                ?.userId!,
+                                                            productIds
+                                                        );
+
+                                                    if (result === 200) {
+                                                        shoppingCart.forEach(
+                                                            (product) => {
+                                                                RemoveProductFromCart(
+                                                                    userService
+                                                                        .user
+                                                                        ?.userId!,
+                                                                    product.productId
+                                                                );
+                                                            }
+                                                        );
+                                                        setShoppingCart([]);
+                                                        setTotal(0);
+                                                    }
+                                                }}
                                             >
                                                 Order
                                             </MDBBtn>

@@ -9,6 +9,8 @@ type childType = {
 };
 
 const OrderLineComponent: FC<childType> = (props: childType): JSX.Element => {
+    const date = new Date(props.orderType.orderDate);
+
     return (
         <>
             <td>
@@ -20,7 +22,7 @@ const OrderLineComponent: FC<childType> = (props: childType): JSX.Element => {
             </td>
             <td>{props.orderType.product.name}</td>
             <td>{props.orderType.product.price + " ₴"}</td>
-            <td>{props.orderType.orderDate}</td>
+            <td>{date.toLocaleString()}</td>
         </>
     );
 };

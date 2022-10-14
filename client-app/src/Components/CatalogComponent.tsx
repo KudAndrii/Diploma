@@ -91,6 +91,7 @@ const CatapogComponent = observer((): JSX.Element => {
                     <div className="container my-5">
                         <img
                             src={sortIcon}
+                            id="pointer"
                             className="sort_icon"
                             onClick={async () => {
                                 if (sortFlag) {
@@ -124,6 +125,7 @@ const CatapogComponent = observer((): JSX.Element => {
                                     <div key={index}>
                                         <div className="card">
                                             <Link
+                                                id="pointer"
                                                 className="nav-link"
                                                 to={"/catalog/" + x.productId}
                                             >
@@ -141,6 +143,7 @@ const CatapogComponent = observer((): JSX.Element => {
             <div className="pageing">
                 <img
                     src={Arrow_left}
+                    id="pointer"
                     className="arrow"
                     onClick={async () => {
                         // get previous page
@@ -158,6 +161,7 @@ const CatapogComponent = observer((): JSX.Element => {
                 ></img>
                 <img
                     src={Arrow_right}
+                    id="pointer"
                     className="arrow"
                     onClick={async () => {
                         // get next page

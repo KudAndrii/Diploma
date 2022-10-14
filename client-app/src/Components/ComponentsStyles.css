@@ -161,3 +161,7 @@ h1 header {
         rgba(37, 117, 252, 1)
     );
 }
+
+#pointer {
+    cursor: pointer;
+}
