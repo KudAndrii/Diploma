@@ -26,7 +26,9 @@ const HeaderComponent = observer((): JSX.Element => {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/cart">
-                                        {userService.user ? "Basket" : ""}
+                                        {userService.user?.token
+                                            ? "Basket"
+                                            : ""}
                                     </Link>
                                 </li>
                                 <li className="nav-item">
@@ -34,7 +36,7 @@ const HeaderComponent = observer((): JSX.Element => {
                                         className="nav-link"
                                         to="/orderHistory"
                                     >
-                                        {userService.user
+                                        {userService.user?.token
                                             ? "Order History"
                                             : ""}
                                     </Link>
@@ -58,7 +60,7 @@ const HeaderComponent = observer((): JSX.Element => {
                         }
                     }}
                 >
-                    {userService.user ? "Log out" : "Log in"}
+                    {userService.user?.token ? "Log out" : "Log in"}
                 </button>
                 {userService.modalFlag && <LoginComponent></LoginComponent>}
             </div>

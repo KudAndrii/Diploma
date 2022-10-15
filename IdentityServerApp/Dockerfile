@@ -20,7 +20,7 @@ USER 1000
 WORKDIR /ids-app
 COPY --from=build-env /ids-app/out .
 
-EXPOSE 7141
-EXPOSE 7030
+EXPOSE 3000
+EXPOSE 7026
 EXPOSE 7184
 ENTRYPOINT ["dotnet", "IdentityServerApp.dll"]

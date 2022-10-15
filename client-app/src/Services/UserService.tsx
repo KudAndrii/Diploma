@@ -11,9 +11,6 @@ export class UserService {
 
     public async Login(login: string, password: string) {
         this.user = await LoginRequest(login, password);
-        debugger;
-        console.log(this.user.userId);
-        console.log(this.user.token);
     }
 
     public Logout() {

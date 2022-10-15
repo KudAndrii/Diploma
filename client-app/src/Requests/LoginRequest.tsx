@@ -23,12 +23,12 @@ const LoginRequest = async (
         requestOptions
     );
     const body = await result.json();
-    let products = new Object() as UserType;
+    let user = new Object() as UserType;
     if (body) {
-        products = body as UserType;
+        user = body as UserType;
     }
 
-    return products;
+    return user;
 };
 
 export default LoginRequest;

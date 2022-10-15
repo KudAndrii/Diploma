@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+    backend:
+        image: diploma-api:v1.2
+        build: ./DiplomaApiApp
+        ports:
+            - "7026:5026"
+        container_name: diploma-api-app
+    identity:
+        image: diploma-ids:v1
+        build: ./IdentityServerApp
+        ports:
+            - "7184:5221"
+        container_name: diploma-ids-app

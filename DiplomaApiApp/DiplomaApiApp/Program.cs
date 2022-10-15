@@ -33,7 +33,7 @@ namespace DiplomaApiApp
                 .AddIdentityServerAuthentication("Bearer", options =>
                 {
                     options.ApiName = "diplomaapi";
-                    options.Authority = "https://localhost:7184";
+                    options.Authority = "http://localhost:7184";
                     options.RequireHttpsMetadata = false;
                 });
 

@@ -24,7 +24,6 @@ const LoginComponent = observer((): JSX.Element => {
                     <Form
                         onSubmit={(e) => {
                             e.preventDefault();
-
                             const target = e.target as typeof e.target &
                                 formControl;
 
