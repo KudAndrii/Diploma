@@ -1,55 +1,13 @@
-.header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    box-shadow: 0 1px 15px 0 rgb(193, 193, 193);
-    height: 100px;
-    width: 100%;
+.color-1 {
+    background-color: #064789;
 }
 
-.header:hover {
-    background-color: rgb(213, 213, 213);
+.color-2 {
+    background-color: #427aa1;
 }
 
-h1 header {
-    margin-bottom: 0;
-    margin-top: 10px;
-}
-
-.navbar {
-    padding-top: 0;
-}
-
-.nav-link:hover {
-    color: rgb(0, 0, 0);
-}
-
-.headerDKLogo {
-    height: 80px;
-    padding-left: 50px;
-    margin-top: 10px;
-}
-
-.headerButtons {
-    text-align: center;
-    margin: auto;
-    margin-left: 0;
-    margin-right: 20px;
-}
-
-.card {
-    width: 18rem;
-}
-
-.card:hover {
-    background-color: rgb(213, 213, 213);
-    box-shadow: 0 1px 15px 0 rgb(193, 193, 193);
-}
-
-.productCardImage {
-    max-height: auto;
-    width: 100%;
+.color-3 {
+    background-color: #ebf2fa;
 }
 
 .catalogGeneral {
@@ -102,23 +60,6 @@ h1 header {
     background-color: rgb(213, 213, 213);
 }
 
-.productPage {
-    display: flex;
-    flex-direction: row;
-    margin-top: 3rem;
-}
-
-.productGeneral {
-    width: 50%;
-    margin-left: 50px;
-}
-
-.productPageImage {
-    margin-bottom: 20px;
-    height: 600px;
-    width: auto;
-}
-
 .productOrderImage {
     margin-left: 10px;
     display: block;
@@ -126,26 +67,9 @@ h1 header {
     width: auto;
 }
 
-.productDescription {
-    width: 50%;
-}
-
 .emptyMessage {
     text-align: center;
     margin-top: 3rem;
-}
-
-.width {
-    width: 100%;
-}
-
-.marginTop {
-    margin-top: 10px;
-}
-
-.total {
-    display: inline-block;
-    margin-left: 25rem;
 }
 
 .gradient-custom {
@@ -162,6 +86,61 @@ h1 header {
     );
 }
 
-#pointer {
+.button-login {
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 20px;
+    padding: 1px 5px 5px 5px;
+    width: 115px;
+    transition: all 0.5s;
     cursor: pointer;
+    vertical-align: center;
+}
+
+.button-login span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button-login span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button-login:hover span {
+    padding-right: 25px;
+}
+
+.button-login:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.button-basket {
+    display: block;
+    margin: 40px 0;
+    width: 240px;
+    height: 80px;
+    border: none;
+    background-color: #427aa1;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+.button-basket:hover {
+    transform: rotateY(-15deg);
+    box-shadow: 15px 0 15px #064789;
 }

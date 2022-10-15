@@ -18,9 +18,9 @@ function App() {
                 <Route path="/" element={<CatalogComponent />} />
                 <Route path="catalog" element={<CatalogComponent />} />
                 <Route path="catalog/:id" element={<ProductPageComponent />} />
-                <Route path="cart" element={<CartComponent />} />
+                <Route path="basket" element={<CartComponent />} />
                 <Route
-                    path="/orderHistory"
+                    path="/order-history"
                     element={<OrderHistoryComponent />}
                 />
             </Routes>

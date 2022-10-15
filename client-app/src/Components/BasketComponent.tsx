@@ -55,7 +55,7 @@ const BasketComponent = (): JSX.Element => {
                         <MDBCol md="10">
                             {shoppingCart.map((x, index) => (
                                 <div key={index}>
-                                    <MDBCard className="width rounded-3 mb-4">
+                                    <MDBCard className="width rounded-3 mb-4 color-3">
                                         <MDBCardBody className="p-4">
                                             <MDBRow className="justify-content-between align-items-center">
                                                 <MDBCol md="2" lg="2" xl="2">
@@ -132,7 +132,7 @@ const BasketComponent = (): JSX.Element => {
                                 </div>
                             ))}
 
-                            <MDBCard className="width rounded-3 mb-4">
+                            <MDBCard className="width rounded-3 mb-4 color-3">
                                 <MDBCardBody className="p-4">
                                     <MDBRow className="justify-content-between align-items-center">
                                         <MDBCol md="2" lg="2" xl="2">
@@ -178,18 +178,19 @@ const BasketComponent = (): JSX.Element => {
                                             lg="2"
                                             xl="2"
                                             className=""
-                                        >
+                                        ></MDBCol>
+                                        <MDBCol>
                                             <MDBTypography
                                                 tag="h5"
                                                 className="mb-0"
                                             >
-                                                {total + " ₴"}
+                                                {"Total: " + total + " ₴"}
                                             </MDBTypography>
                                         </MDBCol>
-                                        <MDBCol></MDBCol>
                                     </MDBRow>
                                 </MDBCardBody>
                             </MDBCard>
+
                             <MDBCard className="width"></MDBCard>
                         </MDBCol>
                     </MDBRow>

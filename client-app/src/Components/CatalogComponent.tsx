@@ -12,6 +12,7 @@ import CategoryType from "../Types/CategoryType";
 import GetProductCategories from "../Requests/GetProductCategories";
 import ProductType from "../Types/ProductType";
 import GetProductsPage from "../Requests/GetProductsPage";
+import ProductListComponent from "./ProductListComponent";
 
 const CatapogComponent = observer((): JSX.Element => {
     const [sortIcon, setSortIcon] = useState(Sort_order);
@@ -87,7 +88,7 @@ const CatapogComponent = observer((): JSX.Element => {
                             </h4>
                         ))}
                 </div>
-                <div className="catalog">
+                <div className="catalog  mx-3">
                     <div className="container my-5">
                         <img
                             src={sortIcon}
@@ -120,22 +121,9 @@ const CatapogComponent = observer((): JSX.Element => {
                             }}
                         ></img>
                         <div className="row mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-                            {productList &&
-                                productList.map((x, index) => (
-                                    <div key={index}>
-                                        <div className="card">
-                                            <Link
-                                                id="pointer"
-                                                className="nav-link"
-                                                to={"/catalog/" + x.productId}
-                                            >
-                                                <ProductCardComponent
-                                                    productType={x}
-                                                ></ProductCardComponent>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                ))}
+                            <ProductListComponent
+                                productList={productList!}
+                            ></ProductListComponent>
                         </div>
                     </div>
                 </div>
