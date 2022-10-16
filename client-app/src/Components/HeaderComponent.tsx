@@ -1,6 +1,6 @@
 import DK_logo from "../DKlogo.png";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { userService } from "../App";
+import { productRangeService, userService } from "../App";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import LoginComponent from "./LogInComponent";
@@ -20,7 +20,17 @@ const HeaderComponent = observer((): JSX.Element => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link onClick={() => navigate("/catalog")}>
+                        <Nav.Link
+                            onClick={() => {
+                                productRangeService.requestOptions.pageIndex = 1;
+                                productRangeService.requestOptions.categoryId =
+                                    -1;
+                                productRangeService.requestOptions.sortFlag =
+                                    false;
+                                productRangeService.SetProductList();
+                                navigate("/catalog");
+                            }}
+                        >
                             Catalog
                         </Nav.Link>
                         {userService.user?.token && (

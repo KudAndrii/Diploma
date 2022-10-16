@@ -13,15 +13,14 @@ type childType = {
 
 const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
     return (
-        <MDBCard>
+        <MDBCard className="bg-image hover-zoom">
             <MDBRipple
                 rippleColor="light"
                 rippleTag="div"
                 className="bg-image rounded hover-zoom"
             >
-                <MDBCardImage
+                <img
                     src={props.productType.img}
-                    fluid
                     className="w-100"
                     alt={props.productType.name}
                 />
