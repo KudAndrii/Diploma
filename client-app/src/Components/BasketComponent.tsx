@@ -95,8 +95,7 @@ const BasketComponent = (): JSX.Element => {
                                                 <MDBCol>
                                                     <img
                                                         src={Trash}
-                                                        id="pointer"
-                                                        className="sort_icon"
+                                                        id="icons"
                                                         onClick={async () => {
                                                             await RemoveProductFromCart(
                                                                 userService.user
@@ -137,7 +136,8 @@ const BasketComponent = (): JSX.Element => {
                                     <MDBRow className="justify-content-between align-items-center">
                                         <MDBCol md="2" lg="2" xl="2">
                                             <MDBBtn
-                                                className="ms-3 btn-primary"
+                                                id="color-1"
+                                                className="ms-3 button-login"
                                                 block
                                                 size="lg"
                                                 onClick={async () => {
@@ -169,7 +169,7 @@ const BasketComponent = (): JSX.Element => {
                                                     }
                                                 }}
                                             >
-                                                Order
+                                                <span>Order</span>
                                             </MDBBtn>
                                         </MDBCol>
                                         <MDBCol md="3" lg="6" xl="3"></MDBCol>

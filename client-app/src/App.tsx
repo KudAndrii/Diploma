@@ -7,8 +7,10 @@ import CartComponent from "./Components/BasketComponent";
 import { UserService } from "./Services/UserService";
 import OrderHistoryComponent from "./Components/OrderHistoryComponent";
 import LoginComponent from "./Components/LogInComponent";
+import { ProductRangeService } from "./Services/ProductRangeService";
 
 export const userService = new UserService();
+export const productRangeService = new ProductRangeService();
 
 function App() {
     return (

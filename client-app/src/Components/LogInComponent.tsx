@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { userService } from "../App";
+import "./HeaderComponent.css";
 
 type formControl = {
     login: { value: string };
@@ -53,9 +54,13 @@ const LoginComponent = observer((): JSX.Element => {
                                 autoFocus
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Login
-                        </Button>
+                        <button
+                            id="color-1"
+                            className="button-login"
+                            type="submit"
+                        >
+                            Log in
+                        </button>
                     </Form>
                 </Modal.Body>
             </Modal>

@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import "./ComponentsStyles.css";
 import { useParams } from "react-router";
 import { Button } from "react-bootstrap";
 import GetProductById from "../Requests/GetProductById";
@@ -7,6 +6,7 @@ import ProductType from "../Types/ProductType";
 import AddProductToCart from "../Requests/AddProductToCart";
 import { userService } from "../App";
 import { MDBBtn } from "mdb-react-ui-kit";
+import "./ProductPageComponent.css";
 
 const ProductPageComponent: FC = (): JSX.Element => {
     const { id } = useParams();
@@ -39,8 +39,9 @@ const ProductPageComponent: FC = (): JSX.Element => {
                             <h2 className="box-title mt-5">{product?.name}</h2>
                             <h1 className="mt-5">{"₴ " + product?.price}</h1>
                             {userService.user?.token && (
-                                <button
-                                    className="button-basket"
+                                <a
+                                    className="button-basket effect my-3"
+                                    data-sm-link-text="ADD"
                                     onClick={() => {
                                         AddProductToCart(
                                             1,
@@ -48,22 +49,18 @@ const ProductPageComponent: FC = (): JSX.Element => {
                                         );
                                     }}
                                 >
-                                    Basket
-                                </button>
+                                    <span>Basket</span>
+                                </a>
                             )}
                             <ul className="list-unstyled">
-                                <li className="my-3">
-                                    <h4>
-                                        <b>OS: </b>
-                                        {product?.os}
-                                    </h4>
-                                </li>
-                                <li>
-                                    <h4>
-                                        <b>Processor: </b>
-                                        {product?.processor}
-                                    </h4>
-                                </li>
+                                <h4 className="my-3">
+                                    <b>OS: </b>
+                                    {product?.os}
+                                </h4>
+                                <h4>
+                                    <b>Processor: </b>
+                                    {product?.processor}
+                                </h4>
                             </ul>
                         </div>
                     </div>

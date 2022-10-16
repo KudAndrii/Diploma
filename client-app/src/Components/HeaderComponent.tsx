@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import LoginComponent from "./LogInComponent";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import "./HeaderComponent.css";
 
 const HeaderComponent = observer((): JSX.Element => {
     const navigate = useNavigate();
@@ -36,7 +37,8 @@ const HeaderComponent = observer((): JSX.Element => {
                         )}
                     </Nav>
                     <button
-                        className="button-login color-1"
+                        id="color-1"
+                        className="button-login"
                         onClick={() => {
                             if (!userService.user) {
                                 userService.modalFlag = true;
@@ -59,60 +61,3 @@ const HeaderComponent = observer((): JSX.Element => {
 });
 
 export default HeaderComponent;
-
-/*
-<div className="header">
-            <img src={DK_logo} alt="DK" className="headerDKLogo"></img>
-            <div>
-                <h1>Online Electronic Store</h1>
-                <nav className="navbar navbar-expand">
-                    <div className="container">
-                        <div className="collapse navbar-collapse" id="">
-                            <ul className="navbar-nav">
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/catalog">
-                                        Catalog
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/cart">
-                                        {userService.user?.token
-                                            ? "Basket"
-                                            : ""}
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link
-                                        className="nav-link"
-                                        to="/orderHistory"
-                                    >
-                                        {userService.user?.token
-                                            ? "Order History"
-                                            : ""}
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <Outlet />
-            </div>
-            <div className="headerButtons">
-                <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                        if (!userService.user) {
-                            userService.modalFlag = true;
-                        } else {
-                            userService.modalFlag = false;
-                            userService.Logout();
-                            navigate("/");
-                        }
-                    }}
-                >
-                    {userService.user?.token ? "Log out" : "Log in"}
-                </button>
-                {userService.modalFlag && <LoginComponent></LoginComponent>}
-            </div>
-        </div>
-*/

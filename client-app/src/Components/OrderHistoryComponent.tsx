@@ -11,6 +11,7 @@ import { userService } from "../App";
 import Table from "react-bootstrap/Table";
 import CategoryType from "../Types/CategoryType";
 import GetProductCategories from "../Requests/GetProductCategories";
+import "./OrderHistoryComponent.css";
 
 const OrderHistoryComponent = (): JSX.Element => {
     const emptyMessage = "It is empty now :(";
