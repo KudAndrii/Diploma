@@ -1,0 +1,38 @@
+.button-login {
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 20px;
+    padding: 1px 5px 5px 5px;
+    width: 115px;
+    transition: all 0.5s;
+    cursor: pointer;
+    vertical-align: center;
+}
+
+.button-login span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button-login span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button-login:hover span {
+    padding-right: 25px;
+}
+
+.button-login:hover span:after {
+    opacity: 1;
+    right: 0;
+}
